@@ -14,30 +14,33 @@ function genNum() {
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
     console.log(gameSequence);
-//Iterating through gameSequence applying fading effece to every array item following the order it was generated with    
-    for (i = 0; i < gameSequence.length; i++) {
-            $('#item' + gameSequence[i]).addClass('animated fadeOut')
-            setInterval(function(){ $('#item' + gameSequence[i]).removeClass('fadeOut').addClass('fadeIn').removeClass('fadeIn'); }, 600);
-            console.log("gameSequence", gameSequence);
-            console.log(typeof(gameSequence[i]));
-    }
-    
+    setTimeout(playSequence, 700)
+}
 
-    // //Iterating through gameSequence applying fading effece to every array item following the order it was generated with    
-    //     for (i = 0; i < gameSequence.length; i++) {
-    //         setTimeout(function() {
-    //             $('#item' + gameSequence[i]).addClass('animated fadeOut');
-    //             setTimeout(function() { $('#item' + gameSequence[i]).removeClass('fadeOut').addClass('fadeIn'); }, 500);
-    //         }, 1000 * (i+1));
-    //     }
+// Solves the issue regarding animations that didn't iterate 
+function animateItem(j) {
+    setTimeout(function() {
+        $('#item' + gameSequence[j]).addClass('activated');
+        setTimeout(function() { $('#item' + gameSequence[j]).removeClass('activated'); }, 500);
+    }, 1000 * (j + 1));
+}
+
+//Iterating through gameSequence applying fading effect to every array item following the order 
+function playSequence() {
+    for (i = 0; i < gameSequence.length; i++) {
+        animateItem(i)
+    }
+    console.log('OUT OF FOR valoarea i', i)
 }
 
 //Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
-function pickSquare(id) {
+function pickSquare(el) {
+    console.log(el.dataset.name, el.dataset.birthday)
     if (gameStart == true) {
-        playerInput.push(parseInt(id));
+        playerInput.push(parseInt(el.dataset.id));
         matchSequence();
         console.log("playerInput", playerInput);
+
     }
     else {
         return alert("To begin playing press START button ");
@@ -54,6 +57,7 @@ function matchSequence() {
             return
         }
     }
+
     if (playerInput.length == gameSequence.length) {
         genNum();
     }
