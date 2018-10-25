@@ -1,34 +1,53 @@
-.gamefield{
-   margin-top:20px;
-}
+body {
+  margin: 0; }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background-color: #393E41;
+  color: #FFFDFD; }
+
+.nav-section {
+  margin-left: 15px; }
+
+.btn {
+  width: 70px;
+  height: 30px;
+  border: solid 1px transparent;
+  border-radius: 15px; }
+
+.level {
+  margin: 0 auto;
+  text-align: center; }
+
+.gamefield {
+  margin-top: 20px;
+  max-width: 500px; }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
 
 .square {
-  padding:0;
-}
+  padding: 0;
+  width: 100%; }
+  .square:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; }
+  .square:hover {
+    cursor: pointer; }
 
-.square:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
- 
-}
+#item1 {
+  background-color: #0DAB76; }
+#item2 {
+  background-color: #235789; }
+#item3 {
+  background-color: #DB2B39; }
+#item4 {
+  background-color: #F0E100; }
 
-.square:hover{
-    cursor: pointer;
-}
-
-#item1{
-    background-color: green;
-}
-
-#item2{
-    background-color: red;
-}
-
-#item3{
-    background-color: blue;
-}
-
-#item4{
-    background-color: yellow;
-}
+/*# sourceMappingURL=style.css.map */

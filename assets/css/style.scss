@@ -1,0 +1,68 @@
+$green:#0DAB76;
+$blue:#235789;
+$red:#DB2B39;
+$yellow:#F0E100;
+$black:#393E41;
+$white:#FFFDFD;
+
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: $black;
+    color: $white;
+}
+
+.nav-section {
+    margin-left: 15px;
+}
+
+.btn {
+    width: 70px;
+    height: 30px;
+    border: solid 1px transparent;
+    border-radius: 15px;
+}
+
+.level {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gamefield {
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.square {
+    padding: 0;
+    width: 100%;
+
+    &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#item{
+    
+    &1{background-color: $green;}
+    &2{background-color: $blue;}
+    &3{background-color: $red;}
+    &4{background-color: $yellow;}
+}
