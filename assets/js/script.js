@@ -1,3 +1,4 @@
+levelCount = 1;
 gameStart = false;
 
 // Clearing input in order to start
@@ -5,6 +6,7 @@ function startGame() {
     gameStart = true;
     gameSequence = [];
     playerInput = [];
+    $(".level").html("<p> Level: "+ levelCount + "</p>");
     genNum();
 }
 
@@ -13,7 +15,7 @@ function genNum() {
     playerInput = [];
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
-    setTimeout(playSequence, 700)
+    playSequence();
 }
 
 // Solves the issue regarding animations that didn't iterate 
@@ -37,7 +39,7 @@ function pickSquare(el) {
         $('#item' + el).addClass('activated');
         setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
         playerInput.push(parseInt(el));
-        matchSequence();
+        matchSequence()
     }
     else {
         return alert("To begin playing press START button ");
@@ -49,13 +51,16 @@ function matchSequence() {
     var i;
     for (i = 0; i < playerInput.length; i++) {
         if (playerInput[i] != gameSequence[i]) {
-            alert("Game Over")
+            setTimeout(function(){ alert("Game Over");},600);
             gameStart = false;
+            levelCount = 0;
+            $(".level").html("<p> Level: "+ levelCount + "</p>");
             return
         }
     }
-
     if (playerInput.length == gameSequence.length) {
+        levelCount++;
+        setTimeout(function() { $(".level").html("<p> Level: "+ levelCount + "</p>");}, 500);
         genNum();
     }
 }
