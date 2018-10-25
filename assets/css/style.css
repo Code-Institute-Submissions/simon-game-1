@@ -17,12 +17,15 @@ body {
   height: 30px;
   border: solid 1px transparent;
   border-radius: 15px; }
+  .btn:hover {
+    cursor: pointer; }
 
 .level {
   margin: 0 auto;
   text-align: center; }
 
 .gamefield {
+  margin: 0 auto;
   margin-top: 20px;
   max-width: 500px; }
 
@@ -40,6 +43,9 @@ body {
     padding-bottom: 100%; }
   .square:hover {
     cursor: pointer; }
+
+.activated {
+  opacity: 0.5; }
 
 #item1 {
   background-color: #0DAB76; }
