@@ -13,7 +13,6 @@ function genNum() {
     playerInput = [];
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
-    console.log(gameSequence);
     setTimeout(playSequence, 700)
 }
 
@@ -30,17 +29,15 @@ function playSequence() {
     for (i = 0; i < gameSequence.length; i++) {
         animateItem(i)
     }
-    console.log('OUT OF FOR valoarea i', i)
 }
 
 //Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
 function pickSquare(el) {
-    console.log(el.dataset.name, el.dataset.birthday)
     if (gameStart == true) {
-        playerInput.push(parseInt(el.dataset.id));
+        $('#item' + el).addClass('activated');
+        setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
+        playerInput.push(parseInt(el));
         matchSequence();
-        console.log("playerInput", playerInput);
-
     }
     else {
         return alert("To begin playing press START button ");
