@@ -1,3 +1,9 @@
+/**********************************      FONTS    ******/
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans');
+
+/**********************************     COLORS    ******/
+
 $green:#0DAB76;
 $blue:#235789;
 $red:#DB2B39;
@@ -5,54 +11,16 @@ $yellow:#F0E100;
 $black:#393E41;
 $white:#FFFDFD;
 
-body {
-    margin: 0;
+/**********************************     MIXINS     ******/
+
+@mixin border($size) {
+    border: $size solid #393E41;
 }
 
-.navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+/****************************     PLACEHOLDERS     ******/
+
+%square {
     width: 100%;
-    background-color: $black;
-    color: $white;
-}
-
-.nav-section {
-    margin-left: 15px;
-}
-
-.btn {
-    width: 70px;
-    height: 30px;
-    border: solid 1px transparent;
-    border-radius: 15px;
-    &:hover {
-        cursor: pointer;
-    }
-}
-
-.level {
-    margin: 0 auto;
-    text-align: center;
-}
-
-.gamefield {
-    margin:0 auto;
-    margin-top: 20px;
-    max-width: 500px;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.square {
-    padding: 0;
-    width: 100%;
-
     &:after {
         content: "";
         display: block;
@@ -63,14 +31,158 @@ body {
     }
 }
 
-.activated{
-    opacity:0.5;
+
+html {
+    height: 100%;
 }
 
-#item{
+body {
+    margin: 0;
+    height: 100%;
+}
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: $black;
+    color: $white;
+    font-family: 'Nunito', sans-serif;
+}
+
+.nav-section {
+    margin-left: 15px;
+}
+
+.btn {
+    width: 70px;
+    height: 30px;
+    margin-left: 15px;
+    border: solid 1px transparent;
+    border-radius: 15px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+.gamefield {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 500px;
+    overflow: hidden;
+    @include border(10px);
+    border-radius: 50%;
+    background-color: $black;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.square {
+    @extend %square;
+    @include border(10px);
+}
+
+.activated {
+    opacity: 0.5;
+}
+
+#item {
+
+    &1 {
+        background-color: $green;
+        border-radius: 100% 0 0 0;
+
+
+    }
+    &2 {
+        background-color: $blue;
+        border-radius: 0 100% 0 0;
+
+    }
+    &3 {
+        background-color: $red;
+        border-radius: 0 0 0 100%;
+
+    }
+    &4 {
+        background-color: $yellow;
+        border-radius: 0 0 100% 0;
+
+    }
+}
+
+.centre {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    align-content:space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $black;
+    padding: 0;
+    max-width: 150px;
+    @extend %square;
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+
+.centre-bottom-half{
+    margin-top:15px;
+}
+
+.btn-start {
+    width: 30px;
+    height: 30px;
+    background-color: $green;
+    color:$white;
+    border: solid 1px transparent;
+    border-radius: 50%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.level-display {
+
+    text-align: center;
+    min-width: 25px;
+    font-family: 'Open Sans', sans serif;
+    border: {
+        style: solid;
+        color: transparent;
+        width: 2px;
+        radius: 15%;
+    }
+
+    background-color:$white;
     
-    &1{background-color: $green;}
-    &2{background-color: $blue;}
-    &3{background-color: $red;}
-    &4{background-color: $yellow;}
+    p{
+        margin:0;
+    }
+}
+
+.simon {
+    width:100%;
+    position:absolute;
+    top: 0px;
+    text-align:center;
+ 
+    h3{
+    margin-top:15px;
+    margin-bottom:0;
+    color: $white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    }
 }

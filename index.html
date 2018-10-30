@@ -7,29 +7,28 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Simon Game</title>
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 
 <body>
 
 	<!-------------------------------------------------------------------------Sounds----------->
-	
-	<audio id="sound1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
-	<audio id="sound2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
-	<audio id="sound3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
-	<audio id="sound4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
-	<audio id="wrong" src="http://www.freesound.org/data/previews/331/331912_3248244-lq.mp3"></audio>
+
+	<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
+	<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
+	<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
+	<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
+	<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
 
 	<!---------------------------------------------------------------------------NAV------->
 	<nav class="navbar">
 		<div class="nav-section">
 			<h1>Simon Memory Game </h1>
 		</div>
-		<div class="nav-section"> <button class="btn btn-start" onclick="startGame()" type="button">Start</button> </div>
+		<div class="nav-section"> <i class="far fa-question-circle"></i></div>
 	</nav>
 	<!---------------------------------------------------------------------GAMEFIELD------->
-	<div class="level">
-			<p>Level: -- </p>
-	</div>
+
 	<div class="gamefield">
 		<div class="container">
 			<div class="square" onclick="pickSquare(this.dataset.id)" data-id="1" id="item1"></div>
@@ -39,6 +38,16 @@
 			<div class="square" onclick="pickSquare(this.dataset.id)" data-id="3" id="item3"></div>
 			<div class="square" onclick="pickSquare(this.dataset.id)" data-id="4" id="item4"></div>
 		</div>
+		<div class="centre">
+			<div class="simon">
+				<h3>simon</h3>
+			</div>
+			<div class="container centre-bottom-half">
+				<div class="level-display"><p> -- </p></div>
+				<div><button class="btn btn-start" onclick="startGame()" type="button"> <i class="fas fa-power-off"></i> </button></div>
+			</div>
+		</div>
+
 	</div>
 </body>
 

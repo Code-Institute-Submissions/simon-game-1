@@ -7,7 +7,7 @@ function startGame() {
     levelCount=1;
     gameSequence = [];
     playerInput = [];
-    $(".level").html("<p> Level: "+ levelCount + "</p>");
+    $(".level-display").html("<p>"+ levelCount + "</p>");
     genNum();
 }
 
@@ -57,13 +57,13 @@ function matchSequence() {
             document.getElementById('wrong').play();
             setTimeout(function(){ alert("Game Over");},600);
             gameStart = false;
-            $(".level").html("<p> Level: "+ levelCount + "</p>");
+            $(".level-display").html("<p> "+ levelCount + "</p>");
             return
         }
     }
     if (playerInput.length == gameSequence.length) {
         levelCount++;
-        setTimeout(function() { $(".level").html("<p> Level: "+ levelCount + "</p>");}, 500);
-        genNum();
+        setTimeout(function() { $(".level-display").html("<p>"+ levelCount + "</p>");}, 500);
+        setTimeout(genNum,2000);
     }
 }
