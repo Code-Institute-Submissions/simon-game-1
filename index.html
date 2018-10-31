@@ -25,8 +25,35 @@
 		<div class="nav-section">
 			<h1>Simon Memory Game </h1>
 		</div>
-		<div class="nav-section"> <i class="far fa-question-circle"></i></div>
+		<div class="nav-section"> <i class="far fa-question-circle" id="howToPlay" onclick="openModule()"></i></div>
 	</nav>
+
+	<!-------------------------------------------------------------HOW TO PLAY MODAL------->
+	<div class="modal" id="howToPlayModule">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span id="close">&times;</span>
+				<h3>How to play?</h3>
+			</div>
+			<div class="modal-body">
+				<p> To start the game press the green button in the centre of the gameboard <span class="btn-example"> <i class="fas fa-play"></i></span> </p>
+				<p>Once you have started the game the start button becomes reset <span class="btn-example"> <i class="fas fa-redo-alt"></i></span> </p>
+				<p>You can reset your current progress at any moment by clicking on the reset button</p>
+				<p>
+					<ul>
+						<li>As soon as you start/reset Simon will play the first sound that correspond to one of the colours </li>
+						<li>You should repeat the sound by pressing the coloured button</li>
+						<li>If you repeat the sequence correctly Simon will play the sequence with an additional sound</li>
+						<li>You should repeat the new sequence</li>
+						<li>The game continues until you make a mistake or WIN by reaching level 20 (current level is displayed in the centre next to the green button) </li>
+					</ul>
+				</p>
+				<h4> Have Fun! </h4>
+			</div>
+		</div>
+	</div>
+
+
 	<!---------------------------------------------------------------------GAMEFIELD------->
 
 	<div class="gamefield">
@@ -43,8 +70,10 @@
 				<h3>simon</h3>
 			</div>
 			<div class="container centre-bottom-half">
-				<div class="level-display"><p> -- </p></div>
-				<div><button class="btn btn-start" onclick="startGame()" type="button"> <i class="fas fa-power-off"></i> </button></div>
+				<div class="level-display">
+					<p> -- </p>
+				</div>
+				<div><button class="btn btn-start" onclick="startGame()" type="button"> <i class="fas fa-play"></i></button></div>
 			</div>
 		</div>
 

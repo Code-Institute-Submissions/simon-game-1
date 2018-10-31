@@ -12,24 +12,13 @@
   .square:hover, .centre:hover {
     cursor: pointer; }
 
+/****************************     GENERIC    ******/
 html {
   height: 100%; }
 
 body {
   margin: 0;
   height: 100%; }
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  background-color: #393E41;
-  color: #FFFDFD;
-  font-family: 'Nunito', sans-serif; }
-
-.nav-section {
-  margin-left: 15px; }
 
 .btn {
   width: 70px;
@@ -40,6 +29,25 @@ body {
   .btn:hover {
     cursor: pointer; }
 
+/****************************     NAV    ******/
+.navbar {
+  display: block;
+  width: 100%;
+  background-color: #393E41;
+  color: #FFFDFD;
+  font-family: 'Nunito', sans-serif; }
+
+.nav-section {
+  display: inline-block;
+  margin-left: 15px; }
+
+#howToPlay {
+  font-size: 23px; }
+  #howToPlay:hover {
+    cursor: pointer;
+    color: #F0E100; }
+
+/************************     GAMEFIELD   ******/
 .gamefield {
   position: relative;
   margin: 0 auto;
@@ -73,6 +81,7 @@ body {
   background-color: #F0E100;
   border-radius: 0 0 100% 0; }
 
+/************************ GAMEFIELD CENTRE DISPLAY  ******/
 .centre {
   position: absolute;
   display: flex;
@@ -91,6 +100,9 @@ body {
 
 .centre-bottom-half {
   margin-top: 15px; }
+
+.btn-example {
+  display: inline-block; }
 
 .btn-start {
   width: 30px;
@@ -126,5 +138,61 @@ body {
     font-family: 'Nunito', sans-serif;
     font-size: 35px;
     font-weight: 700; }
+
+.modal {
+  display: none;
+  padding-top: 10%;
+  z-index: 1;
+  position: fixed;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.modal-content {
+  background-color: #FFFDFD;
+  width: 70%;
+  margin: auto; }
+
+.modal-header {
+  height: 5%;
+  width: 100%;
+  color: #FFFDFD;
+  background-color: #393E41;
+  font-family: 'Nunito', sans-serif; }
+  .modal-header h3 {
+    margin-left: 15px;
+    padding-top: 15px; }
+
+#close {
+  float: right;
+  font-size: 22px;
+  margin-right: 15px; }
+  #close:hover {
+    cursor: pointer; }
+
+.modal-body {
+  padding: 15px;
+  font-family: 'Open Sans', sans serif;
+  color: #393E41; }
+  .modal-body h4 {
+    text-align: center;
+    font-size: 22px; }
+
+.btn-example {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  background-color: #0DAB76;
+  margin-left: 15px;
+  text-align: center;
+  padding-top: 0px;
+  line-height: 1.8;
+  color: #FFFDFD; }
 
 /*# sourceMappingURL=style.css.map */

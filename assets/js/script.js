@@ -4,10 +4,11 @@ gameStart = false;
 // Clearing input in order to start
 function startGame() {
     gameStart = true;
-    levelCount=1;
+    levelCount = 1;
     gameSequence = [];
     playerInput = [];
-    $(".level-display").html("<p>"+ levelCount + "</p>");
+    $(".level-display").html("<p>" + levelCount + "</p>");
+    $(".btn-start>i").removeClass("fa-play").addClass("fa-redo-alt");
     genNum();
 }
 
@@ -22,7 +23,7 @@ function genNum() {
 // Solves the issue regarding animations that didn't iterate 
 function animateItem(j) {
     setTimeout(function() {
-        document.getElementById('sound'+gameSequence[j]).play();
+        document.getElementById('sound' + gameSequence[j]).play();
         $('#item' + gameSequence[j]).addClass('activated');
         setTimeout(function() { $('#item' + gameSequence[j]).removeClass('activated'); }, 500);
     }, 1000 * (j + 1));
@@ -38,7 +39,7 @@ function playSequence() {
 //Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
 function pickSquare(el) {
     if (gameStart == true) {
-        document.getElementById('sound'+ el).play();
+        document.getElementById('sound' + el).play();
         $('#item' + el).addClass('activated');
         setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
         playerInput.push(parseInt(el));
@@ -55,15 +56,32 @@ function matchSequence() {
     for (i = 0; i < playerInput.length; i++) {
         if (playerInput[i] != gameSequence[i]) {
             document.getElementById('wrong').play();
-            setTimeout(function(){ alert("Game Over");},600);
+            setTimeout(function() { alert("Game Over"); }, 600);
             gameStart = false;
-            $(".level-display").html("<p> "+ levelCount + "</p>");
+            $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
+            $(".level-display").html("<p> " + levelCount + "</p>");
             return
         }
     }
     if (playerInput.length == gameSequence.length) {
         levelCount++;
-        setTimeout(function() { $(".level-display").html("<p>"+ levelCount + "</p>");}, 500);
-        setTimeout(genNum,2000);
+        setTimeout(function() { $(".level-display").html("<p>" + levelCount + "</p>"); }, 500);
+        setTimeout(genNum, 2000);
+    }
+}
+
+//HOW TO PLAY MODAL
+
+function openModule() {
+    var modal = document.getElementById("howToPlayModule");
+    var span = document.getElementById("close");
+    modal.style.display = "block";
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 }
