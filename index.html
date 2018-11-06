@@ -10,15 +10,15 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 
-<body>
-
-	<!-------------------------------------------------------------------------Sounds----------->
+<!-------------------------------------------------------------------------Sounds----------->
 
 	<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
 	<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
 	<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
 	<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
 	<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
+
+<body>
 
 	<!---------------------------------------------------------------------------NAV------->
 	<nav class="navbar">
@@ -49,6 +49,33 @@
 					</ul>
 				</p>
 				<h4> Have Fun! </h4>
+			</div>
+		</div>
+	</div>
+
+	<!------------------------------------------------------------------START ALERT------->
+<div class="modal" id="startAlert">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span id="close-alert">&times;</span>
+				<h3>To Begin Playing</h3>
+			</div>
+			<div class="modal-body">
+				<p> To start the game press the green button in the centre of the gameboard <span class="btn-example"> <i class="fas fa-play"></i></span> </p>
+			</div>
+		</div>
+	</div>
+
+<!------------------------------------------------------------------WIN ALERT------->
+<div class="modal" id="winAlert">
+		<div class="modal-content">
+			<div class="modal-header">
+				<p>&nbsp;<span id="close-win-alert">&times;</span></p>
+			</div>
+			<div class="modal-body modal-body-win">
+				<h2>Congratulations!</h2>
+				<h3> You Win!</h3> 
+				<i class="fas fa-trophy"></i>
 			</div>
 		</div>
 	</div>

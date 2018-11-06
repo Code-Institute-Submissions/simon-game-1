@@ -236,7 +236,9 @@ body {
     }
 }
 
-#close {
+#close,
+#close-alert,
+#close-win-alert {
     float: right;
     font-size: 22px;
     margin-right: 15px;
@@ -250,7 +252,9 @@ body {
     padding: 15px;
     font-family: 'Open Sans', sans serif;
     color: $black;
-
+    &-win {
+    text-align:center;
+    }
     h4 {
         text-align: center;
         font-size: 22px;
@@ -270,4 +274,9 @@ body {
     line-height: 1.8;
     color: $white;
 
+}
+
+.fa-trophy{
+    font-size:100px;
+    color:$yellow;
 }

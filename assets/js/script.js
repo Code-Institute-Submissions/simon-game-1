@@ -1,6 +1,6 @@
 levelCount = 0;
 gameStart = false;
-
+alertWin();
 // Clearing input in order to start
 function startGame() {
     gameStart = true;
@@ -17,6 +17,7 @@ function genNum() {
     playerInput = [];
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
+    console.log("sequence",gameSequence);
     playSequence();
 }
 
@@ -43,10 +44,12 @@ function pickSquare(el) {
         $('#item' + el).addClass('activated');
         setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
         playerInput.push(parseInt(el));
+        console.log("myinput",playerInput);
         matchSequence()
     }
     else {
-        return alert("To begin playing press START button ");
+        //Return alert("To begin playing press START button ")
+        return alertMessage();
     }
 }
 
@@ -65,6 +68,9 @@ function matchSequence() {
     }
     if (playerInput.length == gameSequence.length) {
         levelCount++;
+        if (levelCount == 21){
+            return alertWin();
+        }
         setTimeout(function() { $(".level-display").html("<p>" + levelCount + "</p>"); }, 500);
         setTimeout(genNum, 2000);
     }
@@ -82,6 +88,37 @@ function openModule() {
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    }
+}
+
+
+//ALERT MESSAGE
+function alertMessage(){
+    var alert = document.getElementById("startAlert");
+    var span = document.getElementById("close-alert");
+    alert.style.display = "block";
+    span.onclick = function() {
+       alert.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == alert) {
+            alert.style.display = "none";
+        }
+    }
+}
+
+//WIN ALERT
+function alertWin(){
+    var alert = document.getElementById("winAlert");
+    var span = document.getElementById("close-win-alert");
+    alert.style.display = "block";
+    span.onclick = function() {
+       alert.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == alert) {
+            alert.style.display = "none";
         }
     }
 }
