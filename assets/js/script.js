@@ -17,8 +17,20 @@ function genNum() {
     playerInput = [];
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
-    console.log("sequence",gameSequence);
-    playSequence();
+    console.log("sequence", gameSequence);
+    if (levelCount == 1) {
+        setTimeout(playSequence, 1000);
+    }
+    else {
+        playSequence();
+    }
+}
+
+//Iterating through gameSequence applying fading effect to every array item following the order 
+function playSequence() {
+    for (i = 0; i < gameSequence.length; i++) {
+        animateItem(i);
+    }
 }
 
 // Solves the issue regarding animations that didn't iterate 
@@ -26,17 +38,22 @@ function animateItem(j) {
     setTimeout(function() {
         document.getElementById('sound' + gameSequence[j]).play();
         $('#item' + gameSequence[j]).addClass('activated');
-        setTimeout(function() { $('#item' + gameSequence[j]).removeClass('activated'); }, 500);
-    }, 1000 * (j + 1));
+        setTimeout(function() { $('#item' + gameSequence[j]).removeClass('activated'); }, 300);
+    }, tempo() * (j + 1));
 }
 
-//Iterating through gameSequence applying fading effect to every array item following the order 
-function playSequence() {
-    for (i = 0; i < gameSequence.length; i++) {
-        animateItem(i)
+//Increase the tempo when certain levels are reached
+function tempo() {
+    if (levelCount <= 3) {
+        return 900;
+    }
+    else if (levelCount <= 8) {
+        return 700;
+    }
+    else {
+        return 600;
     }
 }
-
 //Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
 function pickSquare(el) {
     if (gameStart == true) {
@@ -44,7 +61,7 @@ function pickSquare(el) {
         $('#item' + el).addClass('activated');
         setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
         playerInput.push(parseInt(el));
-        console.log("myinput",playerInput);
+        console.log("myinput", playerInput);
         matchSequence()
     }
     else {
@@ -68,7 +85,7 @@ function matchSequence() {
     }
     if (playerInput.length == gameSequence.length) {
         levelCount++;
-        if (levelCount == 21){
+        if (levelCount == 21) {
             return alertWin();
         }
         setTimeout(function() { $(".level-display").html("<p>" + levelCount + "</p>"); }, 500);
@@ -94,12 +111,12 @@ function openModule() {
 
 
 //ALERT MESSAGE
-function alertMessage(){
+function alertMessage() {
     var alert = document.getElementById("startAlert");
     var span = document.getElementById("close-alert");
     alert.style.display = "block";
     span.onclick = function() {
-       alert.style.display = "none";
+        alert.style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target == alert) {
@@ -109,12 +126,12 @@ function alertMessage(){
 }
 
 //WIN ALERT
-function alertWin(){
+function alertWin() {
     var alert = document.getElementById("winAlert");
     var span = document.getElementById("close-win-alert");
     alert.style.display = "block";
     span.onclick = function() {
-       alert.style.display = "none";
+        alert.style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target == alert) {
