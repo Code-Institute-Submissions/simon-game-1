@@ -12,11 +12,11 @@
 
 <!-------------------------------------------------------------------------Sounds----------->
 
-	<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
-	<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
-	<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
-	<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
-	<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
+<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
+<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
+<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
+<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
+<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
 
 <body>
 
@@ -54,7 +54,7 @@
 	</div>
 
 	<!------------------------------------------------------------------START ALERT------->
-<div class="modal" id="startAlert">
+	<div class="modal" id="startAlert">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span id="close-alert">&times;</span>
@@ -66,15 +66,15 @@
 		</div>
 	</div>
 
-<!------------------------------------------------------------------WIN ALERT------->
-<div class="modal" id="winAlert">
+	<!------------------------------------------------------------------WIN ALERT------->
+	<div class="modal" id="winAlert">
 		<div class="modal-content">
 			<div class="modal-header">
 				<p>&nbsp;<span id="close-win-alert">&times;</span></p>
 			</div>
 			<div class="modal-body modal-body-win">
 				<h2>Congratulations!</h2>
-				<h3> You Win!</h3> 
+				<h3> You Win!</h3>
 				<i class="fas fa-trophy"></i>
 			</div>
 		</div>
@@ -96,15 +96,25 @@
 			<div class="simon">
 				<h3>simon</h3>
 			</div>
-			<div class="container centre-bottom-half">
-				<div class="level-display">
-					<p> -- </p>
+			<div class="centre-bottom-half">
+				<div class="box">
+					<div class="box-display box-display-level">
+						<p> -- </p>
+					</div>
+					<div class="box-title">Level</div>
 				</div>
-				<div><button class="btn btn-start" onclick="startGame()" type="button"> <i class="fas fa-play"></i></button></div>
+				<div class="box ">
+					<button class="btn-start" onclick="startGame()" type="button"> <i class="fas fa-play"></i></button>
+					<div class="box-title box-title-start">Start</div>
+				</div>
+				<div class="box">
+					<div class="box-display box-display-strict">
+						<p> Off </p>
+					</div>
+					<div class="box-title">Strict</div>
+				</div>
 			</div>
 		</div>
-
-	</div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

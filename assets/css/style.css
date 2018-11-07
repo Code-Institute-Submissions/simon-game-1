@@ -20,15 +20,6 @@ body {
   margin: 0;
   height: 100%; }
 
-.btn {
-  width: 70px;
-  height: 30px;
-  margin-left: 15px;
-  border: solid 1px transparent;
-  border-radius: 15px; }
-  .btn:hover {
-    cursor: pointer; }
-
 /****************************     NAV    ******/
 .navbar {
   display: block;
@@ -61,6 +52,8 @@ body {
 .container {
   display: flex;
   align-items: center; }
+  .container-centre-bottom {
+    justify-content: space-around; }
 
 .square {
   border: 10px solid #393E41; }
@@ -85,24 +78,31 @@ body {
 .centre {
   position: absolute;
   display: flex;
-  align-items: center;
-  align-content: space-around;
-  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #393E41;
   padding: 0;
-  max-width: 150px;
+  width: 150px;
   border: 1px solid transparent;
   border-radius: 50%; }
 
 .centre-bottom-half {
   margin-top: 15px; }
 
-.btn-example {
-  display: inline-block; }
+#strict {
+  width: 20px;
+  height: 20px;
+  background-color: #FFFDFD;
+  color: #393E41;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  margin-left: 15px; }
 
 .btn-start {
   width: 30px;
@@ -114,23 +114,44 @@ body {
   .btn-start:hover {
     cursor: pointer; }
 
-.level-display {
-  text-align: center;
-  min-width: 25px;
-  font-family: 'Open Sans', sans serif;
-  border-style: solid;
-  border-color: transparent;
-  border-width: 2px;
-  border-radius: 15%;
-  background-color: #FFFDFD; }
-  .level-display p {
-    margin: 0; }
+.box {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: inline-block;
+  cursor: default; }
+  .box-display {
+    background-color: #FFFDFD;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    border-radius: 20%;
+    font-family: 'Nunito', sans serif;
+    text-align: center; }
+    .box-display p {
+      color: #393E41;
+      margin: 0; }
+    .box-display-strict {
+      font-size: 12px;
+      text-transform: uppercase;
+      background-color: #DB2B39; }
+      .box-display-strict p {
+        color: #FFFDFD; }
+  .box-title {
+    margin-top: 5px;
+    color: #FFFDFD;
+    font-family: 'Open Sans', sans serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center; }
 
 .simon {
   width: 100%;
   position: absolute;
   top: 0px;
-  text-align: center; }
+  text-align: center;
+  cursor: default; }
   .simon h3 {
     margin-top: 15px;
     margin-bottom: 0;
@@ -139,6 +160,7 @@ body {
     font-size: 35px;
     font-weight: 700; }
 
+/****************************     MODALS    ******/
 .modal {
   display: none;
   padding-top: 10%;

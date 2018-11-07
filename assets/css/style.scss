@@ -42,17 +42,6 @@ body {
     height: 100%;
 }
 
-.btn {
-    width: 70px;
-    height: 30px;
-    margin-left: 15px;
-    border: solid 1px transparent;
-    border-radius: 15px;
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 /****************************     NAV    ******/
 
 .navbar {
@@ -92,6 +81,9 @@ body {
 .container {
     display: flex;
     align-items: center;
+    &-centre-bottom{
+        justify-content:space-around;
+    }
 }
 
 .square {
@@ -133,27 +125,35 @@ body {
 .centre {
     position: absolute;
     display: flex;
-    align-items: center;
-    align-content: space-around;
-    justify-content: center;
-    flex-wrap: wrap;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: $black;
     padding: 0;
-    max-width: 150px;
+    width: 150px;
     @extend %square;
     border: 1px solid transparent;
     border-radius: 50%;
 }
 
 .centre-bottom-half {
+  
     margin-top: 15px;
 }
 
-.btn-example {
-    display: inline-block;
+#strict{
+    width:20px;
+    height:20px;
+    background-color:$white;
+    color:$black;
+    border: solid 1px transparent;
+    border-radius: 50%;
+    margin-left:15px;
 }
 
 .btn-start {
@@ -168,30 +168,55 @@ body {
     }
 }
 
-.level-display {
-
-    text-align: center;
-    min-width: 25px;
-    font-family: 'Open Sans', sans serif;
-    border: {
-        style: solid;
-        color: transparent;
-        width: 2px;
-        radius: 15%;
+.box{
+  
+    width:30px;
+    height:30px;
+    position:relative;
+    margin-left:10px;
+    display:inline-block;
+    cursor:default;
+    &-display{
+        background-color:$white;
+         border: {
+            style: solid;
+            color: transparent;
+            width: 2px;
+            radius: 20%;
+         }    
+        font-family: 'Nunito', sans serif;
+        text-align: center;
+         p {
+            color:$black;
+            margin: 0;
+        }
+        &-strict{
+            font-size:12px;
+            text-transform:uppercase;
+            background-color:$red;
+            p{
+                color:$white;
+            }    
+        }
     }
-
-    background-color:$white;
-
-    p {
-        margin: 0;
+    &-title{
+        margin-top:5px;
+        color:$white;
+        font-family: 'Open Sans', sans serif;
+        font-size:12px;
+        font-weight:400;
+        text-align: center;
     }
 }
+
+
 
 .simon {
     width: 100%;
     position: absolute;
     top: 0px;
     text-align: center;
+    cursor:default;
 
     h3 {
         margin-top: 15px;
@@ -203,6 +228,8 @@ body {
     }
 
 }
+
+/****************************     MODALS    ******/
 
 .modal {
     display: none;

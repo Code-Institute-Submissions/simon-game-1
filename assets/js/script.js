@@ -1,14 +1,16 @@
 levelCount = 0;
 gameStart = false;
-alertWin();
+strict = "off"
+
 // Clearing input in order to start
 function startGame() {
     gameStart = true;
     levelCount = 1;
     gameSequence = [];
     playerInput = [];
-    $(".level-display").html("<p>" + levelCount + "</p>");
+    $(".box-display-level").html("<p>" + levelCount + "</p>");
     $(".btn-start>i").removeClass("fa-play").addClass("fa-redo-alt");
+    $(".box-title-start").html(" Reset ");
     genNum();
 }
 
@@ -79,7 +81,8 @@ function matchSequence() {
             setTimeout(function() { alert("Game Over"); }, 600);
             gameStart = false;
             $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
-            $(".level-display").html("<p> " + levelCount + "</p>");
+            $(".box-title-start").html(" Reset ");
+            $(".box-display-level").html("<p> " + levelCount + "</p>");
             return
         }
     }
@@ -88,7 +91,7 @@ function matchSequence() {
         if (levelCount == 21) {
             return alertWin();
         }
-        setTimeout(function() { $(".level-display").html("<p>" + levelCount + "</p>"); }, 500);
+        setTimeout(function() { $(".box-display-level").html("<p>" + levelCount + "</p>"); }, 500);
         setTimeout(genNum, 2000);
     }
 }
