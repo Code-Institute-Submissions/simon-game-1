@@ -2,6 +2,21 @@ levelCount = 0;
 gameStart = false;
 strict = "off"
 
+
+//Visual changes on clicking the Strict button
+function toggleStrict() {
+    if (strict == "off") {
+        $("#strictButton").css("background", "#0DAB76");
+        $("#strictButton").html("<p> On </p>");
+        strict = "on";
+    }
+    else if (strict == "on") {
+        $("#strictButton").css("background", "#235789");
+        $("#strictButton").html("<p> Off </p>");
+        strict = "off";
+    }
+}
+
 // Clearing input in order to start
 function startGame() {
     gameStart = true;
@@ -76,14 +91,20 @@ function pickSquare(el) {
 function matchSequence() {
     var i;
     for (i = 0; i < playerInput.length; i++) {
-        if (playerInput[i] != gameSequence[i]) {
+        if (playerInput[i] != gameSequence[i] && strict =="on" ) {
             document.getElementById('wrong').play();
-            setTimeout(function() { alert("Game Over"); }, 600);
-            gameStart = false;
-            $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
-            $(".box-title-start").html(" Reset ");
-            $(".box-display-level").html("<p> " + levelCount + "</p>");
-            return
+                setTimeout(function() { alert("Game Over"); }, 600);
+                gameStart = false;
+                $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
+                $(".box-title-start").html(" Start");
+                $(".box-display-level").html("<p> " + levelCount + "</p>");
+                return
+        }else if (playerInput[i] != gameSequence[i] && strict =="off" ) {
+            document.getElementById('wrong').play();
+            setTimeout(function() { alert("Listen to the sequence and try Again"); }, 600);
+            playerInput=[];
+            i=0;
+            playSequence();
         }
     }
     if (playerInput.length == gameSequence.length) {

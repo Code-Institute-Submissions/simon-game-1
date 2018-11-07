@@ -95,15 +95,6 @@ body {
 .centre-bottom-half {
   margin-top: 15px; }
 
-#strict {
-  width: 20px;
-  height: 20px;
-  background-color: #FFFDFD;
-  color: #393E41;
-  border: solid 1px transparent;
-  border-radius: 50%;
-  margin-left: 15px; }
-
 .btn-start {
   width: 30px;
   height: 30px;
@@ -132,12 +123,6 @@ body {
     .box-display p {
       color: #393E41;
       margin: 0; }
-    .box-display-strict {
-      font-size: 12px;
-      text-transform: uppercase;
-      background-color: #DB2B39; }
-      .box-display-strict p {
-        color: #FFFDFD; }
   .box-title {
     margin-top: 5px;
     color: #FFFDFD;
@@ -145,6 +130,16 @@ body {
     font-size: 12px;
     font-weight: 400;
     text-align: center; }
+
+#strictButton {
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #235789;
+  cursor: pointer;
+  border-color: #FFFDFD;
+  border-width: 1px; }
+  #strictButton p {
+    color: #FFFDFD; }
 
 .simon {
   width: 100%;

@@ -146,16 +146,6 @@ body {
     margin-top: 15px;
 }
 
-#strict{
-    width:20px;
-    height:20px;
-    background-color:$white;
-    color:$black;
-    border: solid 1px transparent;
-    border-radius: 50%;
-    margin-left:15px;
-}
-
 .btn-start {
     width: 30px;
     height: 30px;
@@ -190,14 +180,15 @@ body {
             color:$black;
             margin: 0;
         }
-        &-strict{
-            font-size:12px;
-            text-transform:uppercase;
-            background-color:$red;
-            p{
-                color:$white;
-            }    
-        }
+        // &-strict{
+        //     font-size:12px;
+        //     text-transform:uppercase;
+        //     background-color:$red;
+            
+        //     p{
+        //         color:$white;
+        //     }    
+        // }
     }
     &-title{
         margin-top:5px;
@@ -209,6 +200,19 @@ body {
     }
 }
 
+
+#strictButton{
+    font-size:12px;
+    text-transform:uppercase;
+    background-color:$blue;
+    cursor:pointer;
+    border-color:$white;
+    border-width:1px;
+    
+        p{
+            color:$white;
+        }    
+}
 
 
 .simon {
