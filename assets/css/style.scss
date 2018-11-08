@@ -1,11 +1,13 @@
 /**********************************      FONTS    ******/
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,600');
 
 /**********************************     COLORS    ******/
 
 $green:#0DAB76;
+$light-green:#10CE8F;
 $blue:#235789;
+$light-blue:#376693;
 $red:#DB2B39;
 $yellow:#F0E100;
 $black:#393E41;
@@ -29,6 +31,12 @@ $white:#FFFDFD;
     &:hover {
         cursor: pointer;
     }
+}
+
+%transition {
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 /****************************     GENERIC    ******/
@@ -57,8 +65,9 @@ body {
     margin-left: 15px;
 }
 
-#howToPlay {
+.fa-question-circle {
     font-size: 23px;
+    @extend %transition;
     &:hover {
         cursor: pointer;
         color: $yellow;
@@ -81,8 +90,8 @@ body {
 .container {
     display: flex;
     align-items: center;
-    &-centre-bottom{
-        justify-content:space-around;
+    &-centre-bottom {
+        justify-content: space-around;
     }
 }
 
@@ -125,11 +134,11 @@ body {
 .centre {
     position: absolute;
     display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -142,7 +151,7 @@ body {
 }
 
 .centre-bottom-half {
-  
+
     margin-top: 15px;
 }
 
@@ -153,74 +162,86 @@ body {
     color: $white;
     border: solid 1px transparent;
     border-radius: 50%;
+    @extend %transition;
     &:hover {
         cursor: pointer;
+        background-color:$light-green;
     }
 }
 
-.box{
-  
-    width:30px;
-    height:30px;
-    position:relative;
-    margin-left:10px;
-    display:inline-block;
-    cursor:default;
-    &-display{
-        background-color:$white;
-         border: {
+.box {
+
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-left: 10px;
+    display: inline-block;
+    cursor: default;
+    &-display {
+        background-color: $white;
+        border: {
             style: solid;
             color: transparent;
             width: 2px;
             radius: 20%;
-         }    
-        font-family: 'Nunito', sans serif;
+        }
+        font-family: 'Nunito',
+        sans serif;
         text-align: center;
-         p {
-            color:$black;
+        p {
+            color: $black;
             margin: 0;
         }
-        // &-strict{
-        //     font-size:12px;
-        //     text-transform:uppercase;
-        //     background-color:$red;
-            
-        //     p{
-        //         color:$white;
-        //     }    
-        // }
     }
-    &-title{
-        margin-top:5px;
-        color:$white;
+    &-title {
+        margin-top: 5px;
+        color: $white;
         font-family: 'Open Sans', sans serif;
-        font-size:12px;
-        font-weight:400;
+        font-size: 12px;
+        font-weight: 400;
         text-align: center;
     }
 }
 
 
-#strictButton{
-    font-size:12px;
-    text-transform:uppercase;
-    background-color:$blue;
-    cursor:pointer;
-    border-color:$white;
-    border-width:1px;
-    
-        p{
-            color:$white;
-        }    
+.strictButton {
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: $blue;
+    cursor: pointer;
+    border-color: $white;
+    border-width: 1px;
+    min-height: 20px;
+    padding-top: 4px;
+    @extend %transition;
+    p {
+        color: $white;
+    }
+    &:hover{
+        background-color:$light-blue;
+    }
 }
 
+.blue-button{
+     background-color: $blue;
+     &:hover{
+        background-color:$light-blue;
+    }
+}
+
+.green-button{
+    background-color: $green;
+     &:hover{
+        background-color:$light-green;
+    }
+}
 
 .simon {
     width: 100%;
     position: absolute;
     top: 0px;
     text-align: center;
-    cursor:default;
+    cursor: default;
 
     h3 {
         margin-top: 15px;
@@ -253,39 +274,39 @@ body {
     background-color: $white;
     width: 70%;
     margin: auto;
+    &-alert {
+        text-align: center;
+    }
 }
 
 .modal-header {
-    height: 5%;
+    position: relative;
+    height: 35px;
     width: 100%;
     color: $white;
     background-color: $black;
     font-family: 'Nunito', sans-serif;
     h3 {
         margin-left: 15px;
-        padding-top: 15px;
+        padding-top: 5px;
     }
 }
 
-#close,
-#close-alert,
-#close-win-alert {
-    float: right;
+
+.close {
     font-size: 22px;
-    margin-right: 15px;
+    position: absolute;
+    top: 0px;
+    right: 15px;
     &:hover {
         cursor: pointer;
     }
 }
 
-
 .modal-body {
     padding: 15px;
     font-family: 'Open Sans', sans serif;
     color: $black;
-    &-win {
-    text-align:center;
-    }
     h4 {
         text-align: center;
         font-size: 22px;
@@ -307,7 +328,7 @@ body {
 
 }
 
-.fa-trophy{
-    font-size:100px;
-    color:$yellow;
+.fa-trophy {
+    font-size: 100px;
+    color: $yellow;
 }

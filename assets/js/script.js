@@ -1,33 +1,33 @@
 levelCount = 0;
 gameStart = false;
 strict = "off"
-
+alertMessage("winAlert");
 
 //Visual changes on clicking the Strict button
-function toggleStrict() {
+$("#strictButton").click(function() {
     if (strict == "off") {
-        $("#strictButton").css("background", "#0DAB76");
-        $("#strictButton").html("<p> On </p>");
+        $(".strictButton").removeClass("blue-button").addClass("green-button");
+        $(this).html("<p> On </p>");
         strict = "on";
     }
     else if (strict == "on") {
-        $("#strictButton").css("background", "#235789");
-        $("#strictButton").html("<p> Off </p>");
+        $(".strictButton").removeClass("green-button").addClass("blue-button");
+        $(this).html("<p> Off </p>");
         strict = "off";
     }
-}
+});
 
 // Clearing input in order to start
-function startGame() {
+$("#start").click(function() {
     gameStart = true;
     levelCount = 1;
     gameSequence = [];
     playerInput = [];
-    $(".box-display-level").html("<p>" + levelCount + "</p>");
+    $(".box-display-level>p").html(levelCount);
     $(".btn-start>i").removeClass("fa-play").addClass("fa-redo-alt");
     $(".box-title-start").html(" Reset ");
     genNum();
-}
+});
 
 //Generate random number and animate the element with the same item number. Add generated number to gameSequence 
 function genNum() {
@@ -49,7 +49,6 @@ function playSequence() {
         animateItem(i);
     }
 }
-
 // Solves the issue regarding animations that didn't iterate 
 function animateItem(j) {
     setTimeout(function() {
@@ -81,85 +80,79 @@ function pickSquare(el) {
         console.log("myinput", playerInput);
         matchSequence()
     }
-    else {
-        //Return alert("To begin playing press START button ")
-        return alertMessage();
-    }
 }
 
 //Iterate through player's input and check if it matches the game generated sequence
 function matchSequence() {
     var i;
     for (i = 0; i < playerInput.length; i++) {
-        if (playerInput[i] != gameSequence[i] && strict =="on" ) {
+        if (playerInput[i] != gameSequence[i] && strict == "on") {
             document.getElementById('wrong').play();
-                setTimeout(function() { alert("Game Over"); }, 600);
-                gameStart = false;
-                $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
-                $(".box-title-start").html(" Start");
-                $(".box-display-level").html("<p> " + levelCount + "</p>");
-                return
-        }else if (playerInput[i] != gameSequence[i] && strict =="off" ) {
+            setTimeout(alertMessage("gameOverAlert"), 600);
+            gameStart = false;
+            $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
+            $(".box-title-start").html(" Start");
+            $(".box-display-level>p").html(levelCount);
+            return
+        }
+        else if (playerInput[i] != gameSequence[i] && strict == "off") {
             document.getElementById('wrong').play();
-            setTimeout(function() { alert("Listen to the sequence and try Again"); }, 600);
-            playerInput=[];
-            i=0;
-            playSequence();
+            alertMessage("tryAgainAlert");
+            playerInput = [];
+            i = 0;
         }
     }
     if (playerInput.length == gameSequence.length) {
         levelCount++;
         if (levelCount == 21) {
-            return alertWin();
+            return alertMessage("winAlert");
         }
-        setTimeout(function() { $(".box-display-level").html("<p>" + levelCount + "</p>"); }, 500);
+        setTimeout(function() { $(".box-display-level>p").html(levelCount); }, 500);
         setTimeout(genNum, 2000);
     }
 }
 
 //HOW TO PLAY MODAL
 
-function openModule() {
-    var modal = document.getElementById("howToPlayModule");
-    var span = document.getElementById("close");
-    modal.style.display = "block";
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
+$(document).ready(function() {
+    $(".fa-question-circle").click(function() {
+        $("#howToPlayModule").css("display", "block");
+    })
+    $(".close").click(function() {
+        $(this).parents(".modal").css("display", "none");
+    });
+    $(window).click(function(event) {
+        $(".modal").each(function() {
+            if (event.target == this) {
+                $(this).css("display", "none");
+            }
+        })
+    })
+});
 
 //ALERT MESSAGE
-function alertMessage() {
-    var alert = document.getElementById("startAlert");
-    var span = document.getElementById("close-alert");
-    alert.style.display = "block";
-    span.onclick = function() {
-        alert.style.display = "none";
+function alertMessage(alertType) {
+    $("#alert i").removeClass("fas fa-trophy");
+    switch (alertType) {
+        case "tryAgainAlert":
+            $("#alert .modal-header>h3").html("Ooops...");
+            $("#alert .modal-body>h3").html("Try again ");
+            break;
+        case "gameOverAlert":
+            $("#alert .modal-header>h3").html("Sorry");
+            $("#alert .modal-body>>h3").html("Game Over");
+            break;
+        case "winAlert":
+            $("#alert .modal-header>h3").html("Congratulations!!!");
+            $("#alert .modal-body>h3").html("You Win!");
+            $("#alert i").addClass("fas fa-trophy");
+            break;
     }
-    window.onclick = function(event) {
-        if (event.target == alert) {
-            alert.style.display = "none";
-        }
+    if (alertType == "tryAgainAlert") {
+        $("#alert").css("display", "block");
+        setTimeout(playSequence, 3000);
     }
-}
-
-//WIN ALERT
-function alertWin() {
-    var alert = document.getElementById("winAlert");
-    var span = document.getElementById("close-win-alert");
-    alert.style.display = "block";
-    span.onclick = function() {
-        alert.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == alert) {
-            alert.style.display = "none";
-        }
+    else {
+        $("#alert").css("display", "block");
     }
 }

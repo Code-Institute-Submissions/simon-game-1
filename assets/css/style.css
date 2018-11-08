@@ -1,5 +1,5 @@
 /**********************************      FONTS    ******/
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,600");
 /**********************************     COLORS    ******/
 /**********************************     MIXINS     ******/
 /****************************     PLACEHOLDERS     ******/
@@ -11,6 +11,11 @@
     padding-bottom: 100%; }
   .square:hover, .centre:hover {
     cursor: pointer; }
+
+.fa-question-circle, .btn-start, .strictButton {
+  -moz-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
 
 /****************************     GENERIC    ******/
 html {
@@ -32,9 +37,9 @@ body {
   display: inline-block;
   margin-left: 15px; }
 
-#howToPlay {
+.fa-question-circle {
   font-size: 23px; }
-  #howToPlay:hover {
+  .fa-question-circle:hover {
     cursor: pointer;
     color: #F0E100; }
 
@@ -103,7 +108,8 @@ body {
   border: solid 1px transparent;
   border-radius: 50%; }
   .btn-start:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    background-color: #10CE8F; }
 
 .box {
   width: 30px;
@@ -131,15 +137,29 @@ body {
     font-weight: 400;
     text-align: center; }
 
-#strictButton {
+.strictButton {
   font-size: 12px;
   text-transform: uppercase;
   background-color: #235789;
   cursor: pointer;
   border-color: #FFFDFD;
-  border-width: 1px; }
-  #strictButton p {
+  border-width: 1px;
+  min-height: 20px;
+  padding-top: 4px; }
+  .strictButton p {
     color: #FFFDFD; }
+  .strictButton:hover {
+    background-color: #376693; }
+
+.blue-button {
+  background-color: #235789; }
+  .blue-button:hover {
+    background-color: #376693; }
+
+.green-button {
+  background-color: #0DAB76; }
+  .green-button:hover {
+    background-color: #10CE8F; }
 
 .simon {
   width: 100%;
@@ -173,34 +193,32 @@ body {
   background-color: #FFFDFD;
   width: 70%;
   margin: auto; }
+  .modal-content-alert {
+    text-align: center; }
 
 .modal-header {
-  height: 5%;
+  position: relative;
+  height: 35px;
   width: 100%;
   color: #FFFDFD;
   background-color: #393E41;
   font-family: 'Nunito', sans-serif; }
   .modal-header h3 {
     margin-left: 15px;
-    padding-top: 15px; }
+    padding-top: 5px; }
 
-#close,
-#close-alert,
-#close-win-alert {
-  float: right;
+.close {
   font-size: 22px;
-  margin-right: 15px; }
-  #close:hover,
-  #close-alert:hover,
-  #close-win-alert:hover {
+  position: absolute;
+  top: 0px;
+  right: 15px; }
+  .close:hover {
     cursor: pointer; }
 
 .modal-body {
   padding: 15px;
   font-family: 'Open Sans', sans serif;
   color: #393E41; }
-  .modal-body-win {
-    text-align: center; }
   .modal-body h4 {
     text-align: center;
     font-size: 22px; }
