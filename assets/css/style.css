@@ -192,6 +192,7 @@ body {
 .modal-content {
   background-color: #FFFDFD;
   width: 70%;
+  max-width: 720px;
   margin: auto; }
   .modal-content-alert {
     text-align: center; }

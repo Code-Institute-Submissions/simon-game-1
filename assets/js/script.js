@@ -71,7 +71,8 @@ function tempo() {
     }
 }
 //Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
-function pickSquare(el) {
+$(".square").click(function (el) {
+    el= this.dataset.id
     if (gameStart == true) {
         document.getElementById('sound' + el).play();
         $('#item' + el).addClass('activated');
@@ -80,7 +81,7 @@ function pickSquare(el) {
         console.log("myinput", playerInput);
         matchSequence()
     }
-}
+})
 
 //Iterate through player's input and check if it matches the game generated sequence
 function matchSequence() {
@@ -140,7 +141,7 @@ function alertMessage(alertType) {
             break;
         case "gameOverAlert":
             $("#alert .modal-header>h3").html("Sorry");
-            $("#alert .modal-body>>h3").html("Game Over");
+            $("#alert .modal-body>h3").html("Game Over");
             break;
         case "winAlert":
             $("#alert .modal-header>h3").html("Congratulations!!!");

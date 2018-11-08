@@ -273,6 +273,7 @@ body {
 .modal-content {
     background-color: $white;
     width: 70%;
+    max-width:720px;
     margin: auto;
     &-alert {
         text-align: center;
