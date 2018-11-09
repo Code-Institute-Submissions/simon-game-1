@@ -1,7 +1,6 @@
 levelCount = 0;
 gameStart = false;
 strict = "off"
-alertMessage("winAlert");
 
 //Visual changes on clicking the Strict button
 $("#strictButton").click(function() {
@@ -137,7 +136,7 @@ function alertMessage(alertType) {
     switch (alertType) {
         case "tryAgainAlert":
             $("#alert .modal-header>h3").html("Ooops...");
-            $("#alert .modal-body>h3").html("Try again ");
+            $("#alert .modal-body>h3").html("Listen carefully and try again ");
             break;
         case "gameOverAlert":
             $("#alert .modal-header>h3").html("Sorry");

@@ -25,6 +25,11 @@ body {
   margin: 0;
   height: 100%; }
 
+.wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0px 15px; }
+
 /****************************     NAV    ******/
 .navbar {
   display: block;
@@ -98,7 +103,7 @@ body {
   border-radius: 50%; }
 
 .centre-bottom-half {
-  margin-top: 15px; }
+  margin-top: 30px; }
 
 .btn-start {
   width: 30px;
@@ -193,6 +198,7 @@ body {
   background-color: #FFFDFD;
   width: 70%;
   max-width: 720px;
+  min-width: 300px;
   margin: auto; }
   .modal-content-alert {
     text-align: center; }
@@ -219,7 +225,8 @@ body {
 .modal-body {
   padding: 15px;
   font-family: 'Open Sans', sans serif;
-  color: #393E41; }
+  color: #393E41;
+  overflow: auto; }
   .modal-body h4 {
     text-align: center;
     font-size: 22px; }
@@ -240,5 +247,38 @@ body {
 .fa-trophy {
   font-size: 100px;
   color: #F0E100; }
+
+/****************************     MEDIA QUERIES   ******/
+@media screen and (max-width: 480px) {
+  .square {
+    border-width: 5px; }
+
+  .gamefield {
+    border-width: 5px; }
+
+  .centre {
+    width: 130px; }
+
+  .simon h3 {
+    font-size: 30px; }
+
+  .btn-start {
+    width: 25px;
+    height: 25px; }
+
+  .box {
+    width: 25px;
+    height: 25px; }
+
+  .box-title {
+    margin-top: 0px;
+    font-size: 11px; }
+
+  .box-display {
+    font-size: 15px; }
+
+  .strictButton {
+    font-size: 10px;
+    min-height: 16px; } }
 
 /*# sourceMappingURL=style.css.map */

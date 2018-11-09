@@ -50,6 +50,12 @@ body {
     height: 100%;
 }
 
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+
 /****************************     NAV    ******/
 
 .navbar {
@@ -151,8 +157,7 @@ body {
 }
 
 .centre-bottom-half {
-
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 .btn-start {
@@ -165,7 +170,7 @@ body {
     @extend %transition;
     &:hover {
         cursor: pointer;
-        background-color:$light-green;
+        background-color: $light-green;
     }
 }
 
@@ -217,22 +222,22 @@ body {
     p {
         color: $white;
     }
-    &:hover{
-        background-color:$light-blue;
+    &:hover {
+        background-color: $light-blue;
     }
 }
 
-.blue-button{
-     background-color: $blue;
-     &:hover{
-        background-color:$light-blue;
+.blue-button {
+    background-color: $blue;
+    &:hover {
+        background-color: $light-blue;
     }
 }
 
-.green-button{
+.green-button {
     background-color: $green;
-     &:hover{
-        background-color:$light-green;
+    &:hover {
+        background-color: $light-green;
     }
 }
 
@@ -273,7 +278,8 @@ body {
 .modal-content {
     background-color: $white;
     width: 70%;
-    max-width:720px;
+    max-width: 720px;
+    min-width: 300px;
     margin: auto;
     &-alert {
         text-align: center;
@@ -308,6 +314,7 @@ body {
     padding: 15px;
     font-family: 'Open Sans', sans serif;
     color: $black;
+    overflow: auto;
     h4 {
         text-align: center;
         font-size: 22px;
@@ -332,4 +339,43 @@ body {
 .fa-trophy {
     font-size: 100px;
     color: $yellow;
+}
+
+/****************************     MEDIA QUERIES   ******/
+
+@media screen and (max-width:480px) {
+    .square {
+        border-width: 5px;
+    }
+    .gamefield {
+        border-width: 5px;
+    }
+    .centre {
+        width: 130px;
+    }
+    .simon {
+        h3 {
+            font-size: 30px;
+        }
+    }
+    .btn-start {
+        width: 25px;
+        height: 25px;
+    }
+    .box {
+        width: 25px;
+        height: 25px;
+    }
+    .box-title {
+        margin-top: 0px;
+        font-size: 11px;
+    }
+    .box-display {
+        font-size: 15px;
+    }
+    .strictButton {
+        font-size: 10px;
+        min-height: 16px;
+    }
+
 }
