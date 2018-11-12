@@ -1,46 +1,49 @@
 # Simon Memory Game
 
-This project is based on the Simon Memory Game. 
+This project is a single page application based on "Simon" - an electronic memory skill game invented by
+Ralph H. Baer and Howard J. Morrison, with software programming by Lenny Cope [1]. The game generates a series of tones and lights that a player must repeat. 
+If the user succeeds, one more sound is added to the sequence. Once the user fails or reaches level 20, the game is over. In this version of the game if the 
+strict mode is off the game will continue even when the sequence is not repeated correctly; it will play the sequence once again and the user can try until
+the user succeeds.
 
 ## UX
-This webpage contains Simon Memory Game. The main goal is to let users play and have fun in a simpliest way possible.
+The main goal is to let users play and have fun in the simpliest way possible.
 
+* It is a one page application
 * The interface is intuitive
-
-* A short game description is provided in the navigation menu
-
-* All significant events in the game are accompanied by pop-ups such as when the game is over or the player won or the sequence is incorrect.
+* A short game manual is accessible by clicking on the question mark (help) icon in the navigation bar on the top of the page. 
+  It will open in a modal, that can be closed by clicking on the "x" or anywhere outside the modal.
+* All significant events in the game are accompanied by pop-up alerts such as when the game is over or the player won or the sequence is incorrect.
 
 ### User Stories
-1. I really enjoyed Simon Memory Game as child. My goal is to play a similar game on-line.
-   
-2. I am not familiar with the original game but I would like to play a memory game. I can read the short description of the game and play.
-
+1. I really enjoyed Simon  electronic game as a child. My goal is to play a similar game on-line.
+2. I am not familiar with the original game but I would like to play a memory game. I can read the game manual(help) and play.
 
 ## Features
 
-
 ### Existing Features
-1. Users can immediately star playing
-2. Game description and rules provided in the navigation menu.
-3. Once started one of the four sounds is played. Sounds are randomly selected.
-4. User can play in two different modes : strict and normal. 
+1. Game starts by clicking on Start button
+2. Once the game starts start button changes into reset/restart
+3. The player can reset/restart the game at any moment
+2. A short game manual is provided in the navigation bar at the top of the page (as question mark icon)
+3. Once started one of the four sounds is played. Sounds are randomly selected
+4. User can play in two different modes : strict and normal
 5. If playing in strict mode the game ends as soon as the player makes a mistake
 6. In strict mode when a mistake is made a pop-up will inform the player that the game is over
-   In normal mode the player is asked to try again.
-6. After clicking on the start button it transforms into realod, user can reload/restart the game at any moment.
-8. A display on the gamefield shows the current level. 
-8. The game is won once level 20 is reached. A pop-up will inform the player that he is winner.
+   In normal mode the player is asked to try again. The sequence will play again as soon as the user closes the alert
+8. A display on the gamefield shows the current level 
+8. The game is won once level 20 is reached. A pop-up will inform the player that he is winner and the game will be over
+9. The game can be played on different devices; however, it should be played in portrait mode on small devices like mobile phones
 
 ### Other possible Features 
 
-Allow user to continue after level 20.
-
+* Adapting the game for landscape mode for small devices like mobile phones.
+* Allow user to continue after level 20.
 
 ## Technologies Used
 HTML,CSS & JavaScript;
 
-SASS - For a more efficient way of styling
+SASS - For a more efficient CSS
 [SASS](https://sass-lang.com/) 
 
 Google Fonts - For additional fonts with particular styling.
@@ -49,30 +52,56 @@ Google Fonts - For additional fonts with particular styling.
 Font Awesome - For icons and buttons
 [Font Awesome](https://fontawesome.com/free)
 
-jQuery - for a simplified scripting
+jQuery - for a simplified DOM manipulation
 [jQuery](https://jquery.com)
 
 ## Testing
 
-### Game dinamic:
-1. Start the game, check that the firs sound is randomly selected and played. Check that it is correctly added to the array by using Chrome console and debugging tools.
-2. Check that when the user clicks on a button it is correctly added to the array (as in the example above)
-3. Make sure that the check between two arrays is correct.
-4. There was a particular issue regarding the phase when one more sound was added to the sequence and it was played again. It wouldn't play and there was no animation, though the arrays where populated correctly.
-   It was solved by using a self-invoking function.
-5.Check that when level 20 is reached the "Win" pop-up is displayed.
-6.When in strict mode check that the game ends at the first mistake.
-7.When in normal mode check that the game continues and the sequence is played one more time.
-8.Check that once started the "Start" button becomes "Reload/Restart" and allows to restart, overriding any progress.
+### Game dynamics:
+
+#### Starting the game
+*  Check that the firs sound is randomly selected, played and animated. 
+*  Check that the element is correctly added to the array that contains the sequence generated -  Chrome console and debugging tools
+*  Check that once started the "Start" button becomes "Reset/Restart" and allows to restart, overriding any progress.
+
+#### User clicks on one of the four buttons
+* Check that when the user clicks on a button it is correctly added to the array that contains the user's input sequence - Chrome console and debugging tools
+
+#### Check if the user's input sequence matches the one generated by the game 
+* Make sure that the check between two arrays is correct
+
+#### If the match is correct add one more tone to the sequence, play and animate the enire sequence again
+* There was a particular issue regarding the phase when the second (and all the following) sounds were added to the sequence and it was supposed to be played and animated.
+  It was solved by separating intotwo scopes: one for the iteration through all the elemnts of the array and a second selfinvoked function that animated the elemtns and played the tunes
+
+#### If the sequences don't match and Strict mode is off 
+* Pop-up should appear asking the user to try again
+* The correct sequence should be played & animated again
+* The sequence will start playing once the alert is closed
+  
+
+#### If the sequences don't match and Strict mode is on
+* Game Over alert should be displayed
+
+#### Check that when level 20 is reached the "Win" pop-up is displayed.
+
 
 ### Adaptability to different viewport sizes:
-Checked the game is displayed and possibilites of imrpovement on different devices using Chrome tools.
+* Checked that the game is displayed correctly on various devices using Chrome tools.
+* At smaller viewports as mobile phones the games should be played in portrait mode. Currently it is not properly displayed for landscape.
+ 
 
 ## Deployment
 
 Deployed using GitHub Pages .
 
-## Media
+
+## Credits
+
+### Game story and description
+1 [Wikipedia - Simon(game)](https://en.wikipedia.org/wiki/Simon_(game))
+
+### Media
 
 The audio files were obtained from:
 * [Freecodecamp](https://www.freecodecamp.org/)
