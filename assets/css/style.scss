@@ -12,6 +12,7 @@ $red:#DB2B39;
 $yellow:#F0E100;
 $black:#393E41;
 $white:#FFFDFD;
+$bg-color:#FBF9D9;
 
 /**********************************     MIXINS     ******/
 
@@ -48,6 +49,7 @@ html {
 body {
     margin: 0;
     height: 100%;
+    background-color:$bg-color;
 }
 
 .wrapper {
@@ -280,7 +282,10 @@ body {
     width: 70%;
     max-width: 720px;
     min-width: 300px;
-    margin: auto;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    overflow: auto;
     &-alert {
         text-align: center;
     }
@@ -296,6 +301,7 @@ body {
     h3 {
         margin-left: 15px;
         padding-top: 5px;
+        margin-top:0px;
     }
 }
 
