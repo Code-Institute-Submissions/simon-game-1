@@ -225,11 +225,31 @@ body {
 .modal-body {
   padding: 15px;
   font-family: 'Open Sans', sans serif;
+  text-align: center;
   color: #393E41;
   overflow: auto; }
   .modal-body h4 {
     text-align: center;
     font-size: 22px; }
+
+#help-content {
+  display: none;
+  text-align: left; }
+
+#win-alert {
+  display: none;
+  text-align: center; }
+
+.fa-trophy {
+  font-size: 100px;
+  color: #F0E100; }
+
+.fa-award {
+  color: #DB2B39;
+  font-size: 30px;
+  margin: 5px 10px; }
+  .fa-award ~ h3 {
+    display: inline-block; }
 
 .btn-example {
   display: inline-block;
@@ -243,10 +263,6 @@ body {
   padding-top: 0px;
   line-height: 1.8;
   color: #FFFDFD; }
-
-.fa-trophy {
-  font-size: 100px;
-  color: #F0E100; }
 
 /****************************     MEDIA QUERIES   ******/
 @media screen and (max-width: 480px) {

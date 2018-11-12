@@ -313,12 +313,38 @@ body {
 .modal-body {
     padding: 15px;
     font-family: 'Open Sans', sans serif;
+    text-align:center;
     color: $black;
     overflow: auto;
     h4 {
         text-align: center;
         font-size: 22px;
     }
+}
+
+#help-content{
+    display:none;
+    text-align:left;
+}
+
+#win-alert {
+    display:none;
+    text-align:center;
+}
+
+.fa-trophy {
+    font-size: 100px;
+    color: $yellow;
+}
+
+.fa-award{
+    color:$red;
+    font-size:30px;
+    margin:5px 10px;
+    &~h3{
+    display:inline-block;    
+    }
+    
 }
 
 .btn-example {
@@ -336,10 +362,6 @@ body {
 
 }
 
-.fa-trophy {
-    font-size: 100px;
-    color: $yellow;
-}
 
 /****************************     MEDIA QUERIES   ******/
 

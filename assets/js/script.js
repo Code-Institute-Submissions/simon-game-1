@@ -2,7 +2,7 @@ levelCount = 0;
 gameStart = false;
 strict = "off"
 
-//Visual changes on clicking the Strict button
+// VISUAL CHANGES ON CLICKING THE STRICT BUTTON
 $("#strictButton").click(function() {
     if (strict == "off") {
         $(".strictButton").removeClass("blue-button").addClass("green-button");
@@ -16,7 +16,7 @@ $("#strictButton").click(function() {
     }
 });
 
-// Clearing input in order to start
+// CLEARING INPUT IN ORDER TO START OR RESTART
 $("#start").click(function() {
     gameStart = true;
     levelCount = 1;
@@ -28,36 +28,33 @@ $("#start").click(function() {
     genNum();
 });
 
-//Generate random number and animate the element with the same item number. Add generated number to gameSequence 
+// RANDOM NUMBER GENERATION
 function genNum() {
     playerInput = [];
     randomNum = Math.floor(Math.random() * 4 + 1);
     gameSequence.push(randomNum);
     console.log("sequence", gameSequence);
     if (levelCount == 1) {
-        setTimeout(playSequence, 1000);
+        setTimeout(playSequence, 800);
     }
     else {
         playSequence();
     }
 }
 
-//Iterating through gameSequence applying fading effect to every array item following the order 
+// ITERATING THROUGH GAMESEQUENCE APPLYING FADING EFFECT AND PLAYING TONE FOR EACH ARRAY ITEM GENERATED SO FAR
 function playSequence() {
     for (i = 0; i < gameSequence.length; i++) {
-        animateItem(i);
+        (function(i) {
+            setTimeout(function() {
+                document.getElementById('sound' + gameSequence[i]).play();
+                $('#item' + gameSequence[i]).addClass('activated');
+                setTimeout(function() { $('#item' + gameSequence[i]).removeClass('activated'); }, 300);
+            }, tempo() * (i + 1));
+        })(i)
     }
 }
-// Solves the issue regarding animations that didn't iterate 
-function animateItem(j) {
-    setTimeout(function() {
-        document.getElementById('sound' + gameSequence[j]).play();
-        $('#item' + gameSequence[j]).addClass('activated');
-        setTimeout(function() { $('#item' + gameSequence[j]).removeClass('activated'); }, 300);
-    }, tempo() * (j + 1));
-}
-
-//Increase the tempo when certain levels are reached
+// INCREASE THE TEMPO AT CERTAIN LEVELS 
 function tempo() {
     if (levelCount <= 3) {
         return 900;
@@ -69,9 +66,9 @@ function tempo() {
         return 600;
     }
 }
-//Users clicks on a square. Check if the game has started; User input goes into playerInput array; call matchSequence function;
-$(".square").click(function (el) {
-    el= this.dataset.id
+// USER'S INTERACTION WITH THE GAMEFIELD 
+$(".square").click(function(el) {
+    el = this.dataset.id
     if (gameStart == true) {
         document.getElementById('sound' + el).play();
         $('#item' + el).addClass('activated');
@@ -82,7 +79,7 @@ $(".square").click(function (el) {
     }
 })
 
-//Iterate through player's input and check if it matches the game generated sequence
+// ITERATE THROUGH PLAYER'S INPUT AND CHECK IF IT MATCHES THE GAME GENERATED SEQUENCE
 function matchSequence() {
     var i;
     for (i = 0; i < playerInput.length; i++) {
@@ -112,11 +109,11 @@ function matchSequence() {
     }
 }
 
-//HOW TO PLAY MODAL
+// EVENT HANDLERS FOR MODAL AND FOR CLOSING ALERTS
 
 $(document).ready(function() {
     $(".fa-question-circle").click(function() {
-        $("#howToPlayModule").css("display", "block");
+        showMessage("Help", $("#help-content").clone().css("display", "block"));
     })
     $(".close").click(function() {
         $(this).parents(".modal").css("display", "none");
@@ -130,29 +127,35 @@ $(document).ready(function() {
     })
 });
 
-//ALERT MESSAGE
+
+//MODAL ALERT MESSAGES
 function alertMessage(alertType) {
-    $("#alert i").removeClass("fas fa-trophy");
     switch (alertType) {
         case "tryAgainAlert":
-            $("#alert .modal-header>h3").html("Ooops...");
-            $("#alert .modal-body>h3").html("Listen carefully and try again ");
+            showMessage("Ooops...", "Listen carefully and try again ", playSequence);
             break;
         case "gameOverAlert":
-            $("#alert .modal-header>h3").html("Sorry");
-            $("#alert .modal-body>h3").html("Game Over");
+            showMessage("Sorry...", "Game Over ")
             break;
         case "winAlert":
-            $("#alert .modal-header>h3").html("Congratulations!!!");
-            $("#alert .modal-body>h3").html("You Win!");
-            $("#alert i").addClass("fas fa-trophy");
+            showMessage("Well done!", $("#win-alert").clone().css("display", "block"));
             break;
     }
-    if (alertType == "tryAgainAlert") {
-        $("#alert").css("display", "block");
-        setTimeout(playSequence, 3000);
+}
+
+// PRINTING THE MODAL/ALERTS
+function showMessage(title, body, onCloseHandler) {
+
+    $(".modal-header>h3").html(title);
+    $(".modal-body").html(body);
+
+// IN CASE OF THE "TRYAGAIN" ALERT THE SEQUENCE WILL PLAY AS SOON AS THE ALERT IS CLOSED
+    function onClickHandler() {
+        $(".close").off('click', onClickHandler);
+        if (onCloseHandler != undefined) {
+            onCloseHandler();
+        }
     }
-    else {
-        $("#alert").css("display", "block");
-    }
+    $(".close").on("click", onClickHandler);
+    $(".modal").css("display", "block");
 }

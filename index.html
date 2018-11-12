@@ -8,18 +8,17 @@
 	<title>Simon Game</title>
 	<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+	<!-------------------------------------------------------------------------Sounds----------->
+	<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
+	<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
+	<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
+	<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
+	<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
+
 </head>
 
-<!-------------------------------------------------------------------------Sounds----------->
-
-<audio id="sound1" src="assets/audio/simonSound1.mp3"></audio>
-<audio id="sound2" src="assets/audio/simonSound2.mp3"></audio>
-<audio id="sound3" src="assets/audio/simonSound3.mp3"></audio>
-<audio id="sound4" src="assets/audio/simonSound4.mp3"></audio>
-<audio id="wrong" src="assets/audio/wrong.mp3"></audio>
-
 <body>
-
 	<!---------------------------------------------------------------------------NAV------->
 	<nav class="navbar">
 		<div class="nav-section">
@@ -27,81 +26,82 @@
 		</div>
 		<div class="nav-section"> <i class="far fa-question-circle"></i></div>
 	</nav>
-
-	<!-------------------------------------------------------------HOW TO PLAY MODAL------->
-	<div class="modal" id="howToPlayModule">
+	<!-------------------------------------------------------------------------MODAL------->
+	<div class="modal">
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close">&times;</span>
-				<h3>How to play?</h3>
+				<h3></h3>
 			</div>
 			<div class="modal-body">
-				<p> To start the game press the green button in the centre of the gameboard <span class="btn-example"> <i class="fas fa-play"></i></span> </p>
-				<p>Once you have started the game the start button becomes reset, use it anytime you want to start over <span class="btn-example"> <i class="fas fa-redo-alt"></i></span> </p>
-				<p> If <b>Strict Mode</b> is on the game will end as soon as you make a mistake, otherwise you can try again as many times as needed. </p>
-					<ul>
-						<li>As soon as you start/reset Simon will play the first sound that corresponds to one of the colours </li>
-						<li>You should repeat the sound by pressing the coloured button</li>
-						<li>If you repeat the sequence correctly Simon will play the sequence with an additional sound</li>
-						<li>You should repeat the new sequence</li>
-						<li>You WIN by reaching level 20 (current level is displayed next to the green button) </li>
-					</ul>
-				</p>
-				<h4> Have Fun! </h4>
+
 			</div>
 		</div>
 	</div>
 
-	<div class="wrapper">	
-<!--------------------------------------------------------------------------ALERT------->
-	<div class="modal" id="alert">
-		<div class="modal-content modal-content-alert ">
-			<div class="modal-header">
-				<h3></h3>
-				<span class="close">&times;</span>
-			</div>
-			<div class="modal-body">
-				<h3></h3>
-				<i></i>
-			</div>
+	<!-------------------------------------------------------------MODAL BODY CONTENT------->
+	<!------HELP------------>
+	<div id="help-content">
+		<p> To start the game press the green button in the centre of the gameboard <span class="btn-example"> <i class="fas fa-play"></i></span> </p>
+		<p>Once you have started the game the start button becomes reset, use it anytime you want to start over <span class="btn-example"> <i class="fas fa-redo-alt"></i></span> </p>
+		<p> If <b>Strict Mode</b> is on the game will end as soon as you make a mistake, otherwise you can try again as many times as needed. </p>
+		<ul>
+			<li>As soon as you start/reset Simon will play the first sound that corresponds to one of the colours </li>
+			<li>You should repeat the sound by pressing the coloured button</li>
+			<li>If you repeat the sequence correctly Simon will play the sequence with an additional sound</li>
+			<li>You should repeat the new sequence</li>
+			<li>You WIN by reaching level 20 (current level is displayed next to the green button) </li>
+		</ul>
+		</p>
+		<h4> Have Fun! </h4>
+	</div>
+	
+	<!------WIN------------>
+	<div id="win-alert">
+		<h2>Congratulations!!!</h2>
+		<i class="fas fa-trophy"></i>
+		<div>
+		<i class="fas fa-award"></i><h3>We've got a WINNER!</h3><i class="fas fa-award"></i>
 		</div>
 	</div>
 
-	<!---------------------------------------------------------------------GAMEFIELD------->
 
-	<div class="gamefield">
-		<div class="container">
-			<div class="square"  data-id="1" id="item1"></div>
-			<div class="square"  data-id="2" id="item2"></div>
-		</div>
-		<div class="container">
-			<div class="square"  data-id="3" id="item3"></div>
-			<div class="square"  data-id="4" id="item4"></div>
-		</div>
-		<div class="centre">
-			<div class="simon">
-				<h3>simon</h3>
+	<div class="wrapper">
+		<!-------------------------------------------------------------------GAMEFIELD------->
+
+		<div class="gamefield">
+			<div class="container">
+				<div class="square" data-id="1" id="item1"></div>
+				<div class="square" data-id="2" id="item2"></div>
 			</div>
-			<div class="centre-bottom-half">
-				<div class="box">
-					<div class="box-display box-display-level">
-						<p> -- </p>
+			<div class="container">
+				<div class="square" data-id="3" id="item3"></div>
+				<div class="square" data-id="4" id="item4"></div>
+			</div>
+			<div class="centre">
+				<div class="simon">
+					<h3>simon</h3>
+				</div>
+				<div class="centre-bottom-half">
+					<div class="box">
+						<div class="box-display box-display-level">
+							<p> -- </p>
+						</div>
+						<div class="box-title">Level</div>
 					</div>
-					<div class="box-title">Level</div>
-				</div>
-				<div class="box ">
-					<button class="btn-start" id="start" type="button"> <i class="fas fa-play"></i></button>
-					<div class="box-title box-title-start">Start</div>
-				</div>
-				<div class="box">
-					<div class="box-display strictButton " id="strictButton">
-						<p> Off </p>
+					<div class="box ">
+						<button class="btn-start" id="start" type="button"> <i class="fas fa-play"></i></button>
+						<div class="box-title box-title-start">Start</div>
 					</div>
-					<div class="box-title">Strict</div>
+					<div class="box">
+						<div class="box-display strictButton " id="strictButton">
+							<p> Off </p>
+						</div>
+						<div class="box-title">Strict</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 
