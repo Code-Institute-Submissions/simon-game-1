@@ -48,8 +48,9 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
     height: 100%;
-    background-color:$bg-color;
+    background-color: $bg-color;
 }
 
 .wrapper {
@@ -86,8 +87,7 @@ body {
 
 .gamefield {
     position: relative;
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: 30px auto;
     max-width: 500px;
     overflow: hidden;
     @include border(10px);
@@ -301,7 +301,7 @@ body {
     h3 {
         margin-left: 15px;
         padding-top: 5px;
-        margin-top:0px;
+        margin-top: 0px;
     }
 }
 
@@ -319,7 +319,7 @@ body {
 .modal-body {
     padding: 15px;
     font-family: 'Open Sans', sans serif;
-    text-align:center;
+    text-align: center;
     color: $black;
     overflow: auto;
     h4 {
@@ -328,14 +328,14 @@ body {
     }
 }
 
-#help-content{
-    display:none;
-    text-align:left;
+#help-content {
+    display: none;
+    text-align: left;
 }
 
 #win-alert {
-    display:none;
-    text-align:center;
+    display: none;
+    text-align: center;
 }
 
 .fa-trophy {
@@ -343,14 +343,14 @@ body {
     color: $yellow;
 }
 
-.fa-award{
-    color:$red;
-    font-size:30px;
-    margin:5px 10px;
-    &~h3{
-    display:inline-block;    
+.fa-award {
+    color: $red;
+    font-size: 30px;
+    margin: 5px 10px;
+    &~h3 {
+        display: inline-block;
     }
-    
+
 }
 
 .btn-example {
@@ -368,29 +368,30 @@ body {
 
 }
 
-footer{
-    width:100%;
-    background:$black;
-    color:$white;
-    text-align:left;
-    position:fixed;
-    bottom:0;
-    left:0;
-    h3{
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: $black;
+    color: $white;
+    text-align: left;
+
+
+    h3 {
         font-family: 'Nunito', sans-serif;
-        font-size:20px;
+        font-size: 20px;
     }
-    p{
+    p {
         font-family: 'Open Sans', sans-serif;
     }
 }
 
-.footer-section{
+.footer-section {
     margin: 0 auto;
     text-align: center;
 }
 
-    
+
 /****************************     MEDIA QUERIES   ******/
 
 @media screen and (max-width:480px) {
@@ -399,6 +400,7 @@ footer{
     }
     .gamefield {
         border-width: 5px;
+        margin: 10px auto;
     }
     .centre {
         width: 130px;
@@ -427,5 +429,18 @@ footer{
         font-size: 10px;
         min-height: 16px;
     }
-
 }
+
+footer {
+
+    h3 {
+        font-family: 'Nunito', sans-serif;
+        font-size: 15px;
+    }
+    p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+    }
+}
+
+

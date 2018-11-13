@@ -23,6 +23,7 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   height: 100%;
   background-color: #FBF9D9; }
 
@@ -52,8 +53,7 @@ body {
 /************************     GAMEFIELD   ******/
 .gamefield {
   position: relative;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 30px auto;
   max-width: 500px;
   overflow: hidden;
   border: 10px solid #393E41;
@@ -270,13 +270,12 @@ body {
   color: #FFFDFD; }
 
 footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   background: #393E41;
   color: #FFFDFD;
-  text-align: left;
-  position: fixed;
-  bottom: 0;
-  left: 0; }
+  text-align: left; }
   footer h3 {
     font-family: 'Nunito', sans-serif;
     font-size: 20px; }
@@ -293,7 +292,8 @@ footer {
     border-width: 5px; }
 
   .gamefield {
-    border-width: 5px; }
+    border-width: 5px;
+    margin: 10px auto; }
 
   .centre {
     width: 130px; }
@@ -319,5 +319,11 @@ footer {
   .strictButton {
     font-size: 10px;
     min-height: 16px; } }
+footer h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; }
+footer p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; }
 
 /*# sourceMappingURL=style.css.map */
