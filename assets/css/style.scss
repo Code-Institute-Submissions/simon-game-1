@@ -265,7 +265,6 @@ body {
 
 .modal {
     display: none;
-    padding-top: 10%;
     z-index: 1;
     position: fixed;
     overflow: auto;
@@ -282,7 +281,7 @@ body {
     width: 70%;
     max-width: 720px;
     min-width: 300px;
-    margin: 0 auto;
+    margin: 20px auto;
     border: 1px solid transparent;
     border-radius: 15px;
     overflow: auto;
