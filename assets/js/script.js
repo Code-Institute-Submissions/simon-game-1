@@ -1,11 +1,12 @@
 (function() {
-    
+
     var gameSequence = [];
     var playerInput = [];
     var levelCount = 0;
     var gameStart = false;
     var strict = "off";
-   
+    var playing = false;
+
     // VISUAL CHANGES ON CLICKING THE STRICT BUTTON
     $("#strictButton").click(function() {
         if (strict == "off") {
@@ -40,26 +41,47 @@
         gameSequence.push(randomNum);
         console.log("sequence", gameSequence);
         if (levelCount == 1) {
-            setTimeout(playSequence, 800);
+            setTimeout(startPlaySequence, 700);
         }
         else {
-            playSequence();
+            startPlaySequence();
+        }
+    }
+
+    var pidx = 0;
+    var last = 0;
+
+    function playSequence(timestamp) {
+        if (timestamp - last > tempo()) {
+            $('#sound' + gameSequence[pidx]).get(0).cloneNode().play();
+            $('#item' + gameSequence[pidx]).addClass('activated');
+
+            (function(pudx) {
+                setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 300);
+            })(pidx);
+
+            last = timestamp;
+            pidx++
+        }
+
+        if (gameSequence.length > pidx) {
+            requestAnimationFrame(playSequence)
+        }
+        else {
+            pidx = 0;
+            last = 0;
+            playing = false;
         }
     }
 
     // ITERATING THROUGH GAMESEQUENCE APPLYING FADING EFFECT AND PLAYING TONE FOR EACH ARRAY ITEM GENERATED SO FAR
-    function playSequence() {
-        var i;
-        for (i = 0; i < gameSequence.length; i++) {
-            (function(i) {
-                setTimeout(function() {
-                    document.getElementById('sound' + gameSequence[i]).play();
-                    $('#item' + gameSequence[i]).addClass('activated');
-                    setTimeout(function() { $('#item' + gameSequence[i]).removeClass('activated'); }, 300);
-                }, tempo() * (i + 1));
-            })(i);
-        }
+    function startPlaySequence() {
+        pidx = 0;
+        last = 0;
+        playing = true;
+        requestAnimationFrame(playSequence);
     }
+
     // INCREASE THE TEMPO AT CERTAIN LEVELS 
     function tempo() {
         if (levelCount <= 3) {
@@ -73,15 +95,17 @@
         }
     }
     // USER'S INTERACTION WITH THE GAMEFIELD 
-    $(".square").click(function(el) {
-        el = this.dataset.id;
-        if (gameStart == true) {
-            document.getElementById('sound' + el).play();
-            $('#item' + el).addClass('activated');
-            setTimeout(function() { $('#item' + el).removeClass('activated'); }, 500);
-            playerInput.push(parseInt(el));
-            console.log("myinput", playerInput);
-            matchSequence();
+    $(".square").click(function() {
+        if (playing == false) {
+            el = this.dataset.id;
+            if (gameStart == true) {
+                $('#sound' + el).get(0).cloneNode().play();
+                $('#item' + el).addClass('activated');
+                setTimeout(function() { $('#item' + el).removeClass('activated'); }, 300);
+                playerInput.push(parseInt(el));
+                console.log("myinput", playerInput);
+                matchSequence();
+            }
         }
     });
 
@@ -138,7 +162,7 @@
     function alertMessage(alertType) {
         switch (alertType) {
             case "tryAgainAlert":
-                showMessage("Ooops...", "Listen carefully and try again ", playSequence);
+                showMessage("Ooops...", "Listen carefully and try again ", startPlaySequence);
                 break;
             case "gameOverAlert":
                 showMessage("Sorry...", "Game Over ");
