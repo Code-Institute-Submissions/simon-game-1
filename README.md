@@ -2,7 +2,7 @@
 
 This project is a single page application based on "Simon" - an electronic memory skill game invented by
 Ralph H. Baer and Howard J. Morrison, with software programming by Lenny Cope [1]. The game generates a series of tones and lights that a player must repeat. 
-If the user succeeds, one more sound is added to the sequence. Once the user fails or reaches level 20, the game is over. In this version of the game if the 
+If the user succeeds, one more sound is added to the sequence. Once the user fails or complets level 20, the game is over. In this version of the game if the 
 strict mode is off the game will continue even when the sequence is not repeated correctly; it will play the sequence once again and the user can try until
 the user succeeds.
 
@@ -12,7 +12,7 @@ The main goal is to let users play and have fun in the simpliest way possible.
 * It is a one page application
 * The interface is intuitive
 * A short game manual is accessible by clicking on the question mark (help) icon in the navigation bar on the top of the page. 
-  It will open in a modal, that can be closed by clicking on the "x" or anywhere outside the modal.
+  It will open in a modal, that can be closed by clicking on the "x".
 * All significant events in the game are accompanied by pop-up alerts such as when the game is over or the player won or the sequence is incorrect.
 
 ### User Stories
@@ -22,7 +22,7 @@ The main goal is to let users play and have fun in the simpliest way possible.
 ## Features
 
 ### Existing Features
-1. Game starts by clicking on Start button
+1. Game starts by clicking on the Start button
 2. Once the game starts start button changes into reset/restart
 3. The player can reset/restart the game at any moment
 2. A short game manual is provided in the navigation bar at the top of the page (as question mark icon)
@@ -32,13 +32,13 @@ The main goal is to let users play and have fun in the simpliest way possible.
 6. In strict mode when a mistake is made a pop-up will inform the player that the game is over
    In normal mode the player is asked to try again. The sequence will play again as soon as the user closes the alert
 8. A display on the gamefield shows the current level 
-8. The game is won once level 20 is reached. A pop-up will inform the player that he is winner and the game will be over
+8. The game is won once level 20 is completed. A pop-up will inform the player that he is winner and the game will be over
 9. The game can be played on different devices; however, it should be played in portrait mode on small devices like mobile phones
 
 ### Other possible Features 
 
 * Adapting the game for landscape mode for small devices like mobile phones.
-* Allow user to continue after level 20.
+* Allow user to continue after completing level 20.
 
 ## Technologies Used
 HTML,CSS & JavaScript;
@@ -60,7 +60,7 @@ jQuery - for a simplified DOM manipulation
 ### Game dynamics:
 
 #### Starting the game
-*  Check that the firs sound is randomly selected, played and animated. 
+*  Check that the first sound is randomly selected, played and animated. 
 *  Check that the element is correctly added to the array that contains the sequence generated -  Chrome console and debugging tools
 *  Check that once started the "Start" button becomes "Reset/Restart" and allows to restart, overriding any progress.
 
@@ -71,12 +71,13 @@ jQuery - for a simplified DOM manipulation
 * Make sure that the check between two arrays is correct
 
 #### If the match is correct add one more tone to the sequence, play and animate the enire sequence again
-* There was a particular issue regarding the phase when the second (and all the following) sounds were added to the sequence and it was supposed to be played and animated.
-  It was solved by separating intotwo scopes: one for the iteration through all the elemnts of the array and a second selfinvoked function that animated the elemtns and played the tunes
+* There was a particular issue regarding the part when the second (and all the following) sounds were added to the sequence and it had to be to be played and animated.
+  For loop ran without waiting for the setTimeout method to be executed hence it would only animate the last element in the sequence.
+  It was solved by separating into two different scopes. Further improvements were achieved by using requestAnimationFrame method.
 
 #### If the sequences don't match and Strict mode is off 
 * Pop-up should appear asking the user to try again
-* The correct sequence should be played & animated again
+* The correct sequence should be played and animated again
 * The sequence will start playing once the alert is closed
   
 
@@ -88,7 +89,7 @@ jQuery - for a simplified DOM manipulation
 
 ### Adaptability to different viewport sizes:
 * Checked that the game is displayed correctly on various devices using Chrome tools.
-* At smaller viewports as mobile phones the games should be played in portrait mode. Currently it is not properly displayed for landscape.
+* At smaller viewports as mobile phones the games should be played in portrait mode. 
  
 
 ## Deployment
