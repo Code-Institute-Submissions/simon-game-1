@@ -2,6 +2,8 @@
 
     var gameSequence = [];
     var playerInput = [];
+    var pidx = 0;
+    var last = 0;
     var levelCount = 0;
     var gameStart = false;
     var strict = "off";
@@ -39,7 +41,6 @@
         playerInput = [];
         randomNum = Math.floor(Math.random() * 4 + 1);
         gameSequence.push(randomNum);
-        console.log("sequence", gameSequence);
         if (levelCount == 1) {
             setTimeout(startPlaySequence, 700);
         }
@@ -48,16 +49,13 @@
         }
     }
 
-    var pidx = 0;
-    var last = 0;
-
     function playSequence(timestamp) {
         if (timestamp - last > tempo()) {
             $('#sound' + gameSequence[pidx]).get(0).cloneNode().play();
             $('#item' + gameSequence[pidx]).addClass('activated');
 
             (function(pudx) {
-                setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 300);
+                setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 250);
             })(pidx);
 
             last = timestamp;
@@ -96,16 +94,13 @@
     }
     // USER'S INTERACTION WITH THE GAMEFIELD 
     $(".square").click(function() {
-        if (playing == false) {
+        if (playing == false && gameStart == true) {
             el = this.dataset.id;
-            if (gameStart == true) {
-                $('#sound' + el).get(0).cloneNode().play();
-                $('#item' + el).addClass('activated');
-                setTimeout(function() { $('#item' + el).removeClass('activated'); }, 300);
-                playerInput.push(parseInt(el));
-                console.log("myinput", playerInput);
-                matchSequence();
-            }
+            $('#sound' + el).get(0).cloneNode().play();
+            $('#item' + el).addClass('activated');
+            setTimeout(function() { $('#item' + el).removeClass('activated'); }, 250);
+            playerInput.push(parseInt(el));
+            matchSequence();
         }
     });
 
@@ -114,7 +109,7 @@
         var i;
         for (i = 0; i < playerInput.length; i++) {
             if (playerInput[i] != gameSequence[i] && strict == "on") {
-                document.getElementById('wrong').play();
+                $("#wrong").get(0).play();
                 setTimeout(alertMessage("gameOverAlert"), 600);
                 gameStart = false;
                 $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
@@ -123,7 +118,7 @@
                 return;
             }
             else if (playerInput[i] != gameSequence[i] && strict == "off") {
-                document.getElementById('wrong').play();
+                $("#wrong").get(0).play();
                 alertMessage("tryAgainAlert");
                 playerInput = [];
                 i = 0;
@@ -135,7 +130,7 @@
                 return alertMessage("winAlert");
             }
             setTimeout(function() { $(".box-display-level>p").html(levelCount); }, 500);
-            setTimeout(genNum, 2000);
+            setTimeout(genNum, 1000);
         }
     }
 
@@ -147,13 +142,6 @@
         });
         $(".close").click(function() {
             $(this).parents(".modal").css("display", "none");
-        });
-        $(window).click(function(event) {
-            $(".modal").each(function() {
-                if (event.target == this) {
-                    $(this).css("display", "none");
-                }
-            });
         });
     });
 
@@ -183,7 +171,7 @@
         function onClickHandler() {
             $(".close").off('click', onClickHandler);
             if (onCloseHandler != undefined) {
-                onCloseHandler();
+                setTimeout(onCloseHandler, 1000);
             }
         }
         $(".close").on("click", onClickHandler);
