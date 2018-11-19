@@ -6,6 +6,8 @@
     var gameStart = false;
     var strict = "off";
     var playing = false;
+    var pidx = 0;
+    var last = 0;
 
     // VISUAL CHANGES ON CLICKING THE STRICT BUTTON
     $("#strictButton").click(function() {
@@ -40,30 +42,18 @@
         randomNum = Math.floor(Math.random() * 4 + 1);
         gameSequence.push(randomNum);
         console.log("sequence", gameSequence);
-        if (levelCount == 1) {
-            setTimeout(startPlaySequence, 700);
-        }
-        else {
-            startPlaySequence();
-        }
+        startPlaySequence();
     }
-
-    var pidx = 0;
-    var last = 0;
 
     function playSequence(timestamp) {
         if (timestamp - last > tempo()) {
             $('#sound' + gameSequence[pidx]).get(0).cloneNode().play();
             $('#item' + gameSequence[pidx]).addClass('activated');
-
-            (function(pudx) {
-                setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 300);
-            })(pidx);
-
+            let pudx = pidx
+            setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 250);
             last = timestamp;
             pidx++
         }
-
         if (gameSequence.length > pidx) {
             requestAnimationFrame(playSequence)
         }
@@ -79,7 +69,9 @@
         pidx = 0;
         last = 0;
         playing = true;
-        requestAnimationFrame(playSequence);
+        setTimeout(function() {
+            requestAnimationFrame(playSequence);
+        }, 1000);
     }
 
     // INCREASE THE TEMPO AT CERTAIN LEVELS 
@@ -94,27 +86,29 @@
             return 600;
         }
     }
+    
     // USER'S INTERACTION WITH THE GAMEFIELD 
     $(".square").click(function() {
-        if (playing == false) {
-            el = this.dataset.id;
-            if (gameStart == true) {
-                $('#sound' + el).get(0).cloneNode().play();
-                $('#item' + el).addClass('activated');
-                setTimeout(function() { $('#item' + el).removeClass('activated'); }, 300);
-                playerInput.push(parseInt(el));
-                console.log("myinput", playerInput);
+        if (playing == false && gameStart == true) {
+            console.log('CLICK')
+            var element = this;
+            var el = element.dataset.id;
+            $('#sound' + el).get(0).cloneNode().play();
+            $(element).addClass('activated');
+            setTimeout(function() {
+                $(element).removeClass('activated');
                 matchSequence();
-            }
+            }, 250);
+            playerInput.push(parseInt(el));
         }
     });
-
+    
     // ITERATE THROUGH PLAYER'S INPUT AND CHECK IF IT MATCHES THE GAME GENERATED SEQUENCE
     function matchSequence() {
         var i;
         for (i = 0; i < playerInput.length; i++) {
             if (playerInput[i] != gameSequence[i] && strict == "on") {
-                document.getElementById('wrong').play();
+                $("#wrong").get(0).play();
                 setTimeout(alertMessage("gameOverAlert"), 600);
                 gameStart = false;
                 $(".btn-start>i").removeClass("fa-redo-alt").addClass("fa-play");
@@ -123,7 +117,7 @@
                 return;
             }
             else if (playerInput[i] != gameSequence[i] && strict == "off") {
-                document.getElementById('wrong').play();
+                $("#wrong").get(0).play();
                 alertMessage("tryAgainAlert");
                 playerInput = [];
                 i = 0;
@@ -135,25 +129,17 @@
                 return alertMessage("winAlert");
             }
             setTimeout(function() { $(".box-display-level>p").html(levelCount); }, 500);
-            setTimeout(genNum, 2000);
+            genNum();
         }
     }
 
     // EVENT HANDLERS FOR MODAL AND FOR CLOSING ALERTS
-
     $(document).ready(function() {
         $(".fa-question-circle").click(function() {
             showMessage("Help", $("#help-content").clone().css("display", "block"));
         });
         $(".close").click(function() {
             $(this).parents(".modal").css("display", "none");
-        });
-        $(window).click(function(event) {
-            $(".modal").each(function() {
-                if (event.target == this) {
-                    $(this).css("display", "none");
-                }
-            });
         });
     });
 
@@ -183,7 +169,7 @@
         function onClickHandler() {
             $(".close").off('click', onClickHandler);
             if (onCloseHandler != undefined) {
-                onCloseHandler();
+                setTimeout(onCloseHandler, 1000);
             }
         }
         $(".close").on("click", onClickHandler);
