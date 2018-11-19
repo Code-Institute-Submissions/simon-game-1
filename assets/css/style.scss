@@ -32,6 +32,7 @@ $bg-color:#FBF9D9;
     &:hover {
         cursor: pointer;
     }
+    outline:none;
 }
 
 %transition {
@@ -51,12 +52,7 @@ body {
     padding: 0;
     height: 100%;
     background-color: $bg-color;
-     -webkit-tap-highlight-color: transparent;
-    user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .wrapper {
@@ -115,6 +111,8 @@ body {
 .square {
     @extend %square;
     @include border(10px);
+
+
 }
 
 .activated {
@@ -126,23 +124,19 @@ body {
     &1 {
         background-color: $green;
         border-radius: 100% 0 0 0;
-
-
     }
     &2 {
         background-color: $blue;
         border-radius: 0 100% 0 0;
-
     }
+
     &3 {
         background-color: $red;
         border-radius: 0 0 0 100%;
-
     }
     &4 {
         background-color: $yellow;
         border-radius: 0 0 100% 0;
-
     }
 }
 
@@ -196,6 +190,8 @@ body {
     margin-left: 10px;
     display: inline-block;
     cursor: default;
+    user-select: none;
+
     &-display {
         background-color: $white;
         border: {
@@ -453,5 +449,3 @@ footer {
         font-size: 12px;
     }
 }
-
-

@@ -90,7 +90,6 @@
     // USER'S INTERACTION WITH THE GAMEFIELD 
     $(".square").click(function() {
         if (playing == false && gameStart == true) {
-            console.log('CLICK')
             var element = this;
             var el = element.dataset.id;
             $('#sound' + el).get(0).cloneNode().play();

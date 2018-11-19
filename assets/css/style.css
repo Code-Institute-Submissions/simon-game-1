@@ -4,7 +4,8 @@
 /**********************************     MIXINS     ******/
 /****************************     PLACEHOLDERS     ******/
 .square, .centre {
-  width: 100%; }
+  width: 100%;
+  outline: none; }
   .square:after, .centre:after {
     content: "";
     display: block;
@@ -26,12 +27,7 @@ body {
   padding: 0;
   height: 100%;
   background-color: #FBF9D9;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none; }
+  -webkit-tap-highlight-color: transparent; }
 
 .wrapper {
   max-width: 700px;
@@ -134,7 +130,8 @@ body {
   position: relative;
   margin-left: 10px;
   display: inline-block;
-  cursor: default; }
+  cursor: default;
+  user-select: none; }
   .box-display {
     background-color: #FFFDFD;
     border-style: solid;
