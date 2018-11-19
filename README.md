@@ -32,11 +32,7 @@ The main goal is to let users play and have fun in the simpliest way possible.
 6. In strict mode when a mistake is made a pop-up will inform the player that the game is over
    In normal mode the player is asked to try again. The sequence will play again as soon as the user closes the alert
 8. A display on the gamefield shows the current level 
-<<<<<<< HEAD
 8. The game is won once level 20 is completed. A pop-up will inform the player that he/she won and the game will be over
-=======
-8. The game is won once level 20 is completed. A pop-up will inform the player that he is winner and the game will be over
->>>>>>> 9dfec917f9d91025c68396ac9cfa3b1fd25df3ad
 9. The game can be played on different devices; however, it should be played in portrait mode on small devices like mobile phones
 
 ### Other possible Features 
@@ -75,16 +71,10 @@ jQuery - for a simplified DOM manipulation
 * Make sure that the check between two arrays is correct
 
 #### If the match is correct add one more tone to the sequence, play and animate the enire sequence again
-<<<<<<< HEAD
 * There was a particular issue regarding the phase when the second (and all the following) sounds were added to the sequence and it had to be played and animated.
   For loop ran without waiting for the setTimeout method to be executed hence it would only animate the last element in the sequence.
   It was solved by separating into two different scopes: first by using a different selfinvoking function and as a final solution by using a let variable as it allowed the separation of scopes as well it also makes the code easier to read. 
   Further improvements were achieved by using requestAnimationFrame method.
-=======
-* There was a particular issue regarding the part when the second (and all the following) sounds were added to the sequence and it had to be to be played and animated.
-  For loop ran without waiting for the setTimeout method to be executed hence it would only animate the last element in the sequence.
-  It was solved by separating into two different scopes. Further improvements were achieved by using requestAnimationFrame method.
->>>>>>> 9dfec917f9d91025c68396ac9cfa3b1fd25df3ad
 
 #### If the sequences don't match and Strict mode is off 
 * Pop-up should appear asking the user to try again
@@ -100,11 +90,7 @@ jQuery - for a simplified DOM manipulation
 
 ### Adaptability to different viewport sizes:
 * Checked that the game is displayed correctly on various devices using Chrome tools.
-<<<<<<< HEAD
 * At smaller viewports as mobile phones the games should be played in portrait mode.
-=======
-* At smaller viewports as mobile phones the games should be played in portrait mode. 
->>>>>>> 9dfec917f9d91025c68396ac9cfa3b1fd25df3ad
  
 
 ## Deployment
