@@ -33,7 +33,7 @@ The main goal is to let users play and have fun in the simpliest way possible.
    In normal mode the player is asked to try again. The sequence will play again as soon as the user closes the alert
 8. A display on the gamefield shows the current level 
 8. The game is won once level 20 is completed. A pop-up will inform the player that he/she won and the game will be over
-9. The game can be played on different devices; however, it should be played in portrait mode on small devices like mobile phones
+9. The game can be played on different devices with a viewport as small as 320px;
 
 ### Other possible Features 
 
@@ -57,6 +57,8 @@ jQuery - for a simplified DOM manipulation
 
 ## Testing
 
+All the testing performed was manual. 
+
 ### Game dynamics:
 
 #### Starting the game
@@ -75,6 +77,8 @@ jQuery - for a simplified DOM manipulation
   For loop ran without waiting for the setTimeout method to be executed hence it would only animate the last element in the sequence.
   It was solved by separating into two different scopes: first by using a different selfinvoking function and as a final solution by using a let variable as it allowed the separation of scopes as well it also makes the code easier to read. 
   Further improvements were achieved by using requestAnimationFrame method.
+  Using a let variable may present some issues for earlier version of Internet Explorer.
+
 
 #### If the sequences don't match and Strict mode is off 
 * Pop-up should appear asking the user to try again
@@ -90,12 +94,19 @@ jQuery - for a simplified DOM manipulation
 
 ### Adaptability to different viewport sizes:
 * Checked that the game is displayed correctly on various devices using Chrome tools.
-* At smaller viewports as mobile phones the games should be played in portrait mode.
- 
+* Checked game rendering for screens as small as 320px, used media queries for fixing the graphic issues that occurred 
+* At smaller viewports as mobile phones the games should be played in portrait mode, currently it won't adjust to landscape mode
+
+
+## Version Control
+Git and GitHub were use for version control. Commits where made at each important change, the goal was to keep them concise and relevant.
+Had some issues after deleting a file directly from GitHub, had to merge local repository with the one on GitHub. 
+Same issue emerged when a commit was made from a different local repository that is a clone of the project, that repository was used to test out new ideas. 
+Conflicts that emerged between the repositories had to be solved.
 
 ## Deployment
 
-Deployed using GitHub Pages .
+Deployed using GitHub Pages.
 
 
 ## Credits
