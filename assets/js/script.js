@@ -41,30 +41,10 @@
         playerInput = [];
         randomNum = Math.floor(Math.random() * 4 + 1);
         gameSequence.push(randomNum);
-        console.log("sequence", gameSequence);
         startPlaySequence();
     }
 
-    function playSequence(timestamp) {
-        if (timestamp - last > tempo()) {
-            $('#sound' + gameSequence[pidx]).get(0).cloneNode().play();
-            $('#item' + gameSequence[pidx]).addClass('activated');
-            let pudx = pidx
-            setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 250);
-            last = timestamp;
-            pidx++
-        }
-        if (gameSequence.length > pidx) {
-            requestAnimationFrame(playSequence)
-        }
-        else {
-            pidx = 0;
-            last = 0;
-            playing = false;
-        }
-    }
-
-    // ITERATING THROUGH GAMESEQUENCE APPLYING FADING EFFECT AND PLAYING TONE FOR EACH ARRAY ITEM GENERATED SO FAR
+   // START PLAYING
     function startPlaySequence() {
         pidx = 0;
         last = 0;
@@ -72,6 +52,28 @@
         setTimeout(function() {
             requestAnimationFrame(playSequence);
         }, 1000);
+    }
+
+    // ITERATE THROUGH THE SEQUENCE, PLAY TONE AND ANIMATE EACH ITEM
+    function playSequence(timestamp) {
+        if (timestamp - last > tempo()) {
+            $('#sound' + gameSequence[pidx]).get(0).cloneNode().play();
+            $('#item' + gameSequence[pidx]).addClass('activated');
+            
+            let pudx = pidx;
+            
+            setTimeout(function() { $('#item' + gameSequence[pudx]).removeClass('activated'); }, 250);
+            last = timestamp;
+            pidx++;
+        }
+        if (gameSequence.length > pidx) {
+            requestAnimationFrame(playSequence);
+        }
+        else {
+            pidx = 0;
+            last = 0;
+            playing = false;
+        }
     }
 
     // INCREASE THE TEMPO AT CERTAIN LEVELS 
@@ -147,7 +149,7 @@
     function alertMessage(alertType) {
         switch (alertType) {
             case "tryAgainAlert":
-                showMessage("Ooops...", "Listen carefully and try again ", startPlaySequence);
+                showMessage("Ooops...", "Watch and listen carefully and try again ", startPlaySequence);
                 break;
             case "gameOverAlert":
                 showMessage("Sorry...", "Game Over ");
